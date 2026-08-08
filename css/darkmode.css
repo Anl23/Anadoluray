@@ -151,7 +151,7 @@
 .dark .content > h2{
 
     color:#fff;
-    border-left-color:#666;
+    border-left-color:#fff;
 
 }
 
@@ -166,4 +166,18 @@
 
     border-color:#333;
 
+}
+
+/* Full width yazılar */
+
+.dark .full-width-text h3{
+    color:#fff;
+}
+
+.dark .full-width-text p{
+    color:#ddd;
+}
+
+.dark .full-width-text p b{
+    color:#fff;
 }

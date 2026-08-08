@@ -22,31 +22,7 @@ if(menuToggle && sidebar){
     });
 
 }
-
-
-// Tema sistemi
-
 const themeButtons = document.querySelectorAll(".theme-toggle");
-
-
-function updateThemeIcon(){
-
-    themeButtons.forEach(button=>{
-
-        if(document.body.classList.contains("dark")){
-
-            button.textContent = "☀️";
-
-        }else{
-
-            button.textContent = "🌙";
-
-        }
-
-    });
-
-}
-
 
 
 themeButtons.forEach(button => {
@@ -68,41 +44,24 @@ themeButtons.forEach(button => {
         }
 
 
-        updateThemeIcon();
-
-
     });
 
 });
 
 
 
+if(localStorage.getItem("theme") === "dark"){
 
-// Kayıtlı tema varsa kullan
-
-const savedTheme = localStorage.getItem("theme");
-
-
-if(savedTheme){
-
-    document.body.classList.toggle("dark", savedTheme === "dark");
-
-
-}else{
-
-
-    // Cihaz temasını kullan
-
-    if(window.matchMedia("(prefers-color-scheme: dark)").matches){
-
-        document.body.classList.add("dark");
-
-    }
-
+    document.body.classList.add("dark");
 
 }
+document.addEventListener("click", function(event) {
+const sidebar = document.querySelector(".sidebar");
+const menuToggle = document.querySelector(".menu-toggle");
 
-
-// Açılışta ikonu ayarla
-
-updateThemeIcon();
+if (sidebar && sidebar.classList.contains("active")) {
+if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+sidebar.classList.remove("active");
+}
+}
+});

@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İptal Edilmiş - AnadoluRay Arşivi</title>
+<meta name="description" content="İptal edilmiş raylı sistem hatları ile ilgili bilgiler.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/iptal.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/darkmode.css">
+</head>
+
+<body>
+
+<div class="top-bar">
+<button class="theme-toggle desktop-theme">
+🌙
+</button>
+</div>
+
+<div class="mobile-bar">
+<button class="menu-toggle">
+☰
+</button>
+<button class="theme-toggle">
+🌙
+</button>
+</div>
+
+<div class="sidebar">
+<div class="logo">
+AnadoluRay Arşivi
+</div>
+<div class="menu">
+<a href="index.html"> Ana Sayfa</a>
+<a href="isletmede.html"> İşletmede</a>
+<a href="insa.html"> İnşa Halinde</a>
+<a href="proje.html"> Proje Aşamasında</a>
+<a href="fizibilite.html"> Ön Fizibilite Aşamasında</a>
+<a class="active" href="iptal.html"> İptal Edilmiş</a>
+</div>
+</div>
+
+<div class="content">
+
+<div class="hero">
+<div class="hero-content">
+<h1>İptal Edilmiş Raylı Sistem Hatları</h1>
+<p>İstanbul Anadolu Yakası'nda iptal edilmiş raylı sistem hatları.</p>
+</div>
+</div>
+
+<!-- M HATTI -->
+<div class="line m">
+<div class="line-title m" onclick="openLine(this)">
+<img src="img/m.png" class="line-logo" alt="M"> M Kadıköy - Sultanbeyli Metro Hattı
+</div>
+<div class="line-content">
+<div class="line-top">
+<div class="info">
+<p><b>Uzunluk:</b> 33,6 km</p>
+<p><b>İstasyon Sayısı:</b> 23</p>
+
+<br>
+<p>
+<b>M Kadıköy - Sabiha Gökçen Havalimanı Metro Hattı</b>, İstanbul Anadolu Yakası'nın ilk yeraltı toplu taşıma omurgasıdır. Kadıköy sahilinden başlayarak Sabiha Gökçen Havalimanı'na kadar uzanan 33,5 km uzunluğundaki ve 23 istasyonlu bu hat, kentin en yoğun transit koridorlarından birini oluşturmaktadır. Tamamı yer altında bulunan istasyonlarıyla hat, 52 dakikalık bir seyahat süresi sunmaktadır.
+</p>
+</div>
+<div class="route">
+<img src="img/m30-guzergah.jpg" alt="M Güzergah Haritası" class="route-img">
+</div>
+</div>
+<div class="full-width-text">
+<h3>Proje Geçmişi ve Evrimi</h3>
+<p>
+İlk aşamada D.100 karayolu orta refüjünde <i>Harem - Tuzla Hafif Raylı Sistemi</i> olarak planlanan hat, yoğun yolcu talebi, karayolu daralma riskleri ve Marmaray entegrasyonu göz önünde bulundurularak Temmuz 2005'te tam ölçekli metro standartlarına dönüştürülmüştür. 2008 yılında Avrasya Metro Grubu tarafından yürütülen ikmal ve tünel kazı çalışmaları 2010 yılında tamamlanmıştır. Hatta hizmet verecek ilk tren setleri için İspanyol CAF firması ile anlaşılmış ve test süreçlerinin ardından hat, 17 Ağustos 2012 tarihinde Kadıköy - Kartal etabı ile işletmeye açılmıştır.
+</p>
+<h3>Etap Açılışları</h3>
+<p>
+• <b>17 Ağustos 2012:</b> Kadıköy – Kartal<br>
+• <b>10 Ekim 2016:</b> Kartal – Tavşantepe<br>
+• <b>2 Ekim 2022:</b> Tavşantepe – Sabiha Gökçen Havalimanı<br>
+</p>
+<h3>Altyapı ve Teknik Özellikler</h3>
+<p>
+Rijit katener enerji besleme sistemine sahip olan M4 hattı, 90 saniyelik sefer sıklığına imkan tanıyan sinyalizasyon altyapısına sahiptir. İşletme 4'lü ve 8'li (2.600 yolcu kapasiteli) tren dizileri ile yürütülmektedir. Esenkent'te ana kumanda merkezi, Maltepe'de ise depo sahası yer almaktadır. Kadıköy, Ayrılık Çeşmesi, Ünalan ve Göztepe istasyonları deniz seviyesinin altında konumlanmıştır. İstasyonlar arası ortalama mesafe 1.300 metre olup, en yakın mesafe Maltepe – Huzurevi (800 m), en uzak mesafe ise Bostancı – Küçükyalı (2.300 m) arasındadır.
+</p>
+<h3>Yolcu İstatistikleri</h3>
+<p>
+M4 hattı, 2024 yılında günlük ortalama 300.480 yolcu taşımıştır. Hattın tek günlük yolcu taşıma rekoru ise 387.372 kişi ile 2023 yılında kaydedilmiştir.
+</p>
+</div>
+</div>
+</div>
+
+
+<script>
+function openLine(element) {
+let content = element.nextElementSibling;
+content.classList.toggle("active");
+}
+</script>
+<script src="js/script.js"></script>
+</body>
+
+</html>

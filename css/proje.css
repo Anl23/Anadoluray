@@ -25,45 +25,39 @@ color:#222;
 
 margin-left:260px;
 padding:40px;
-
+padding-top:100px;
 }
 
 
 /* Banner */
 
-.hero {
-    position: relative;
-    width: 100%;
-    height: 320px; /* Diğer sayfayla birebir aynı yükseklik */
-    
-    /* İnşa halindeki banner resmini ve alttan üste kararan filtreyi bağladık */
-    background-image: 
-        linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.1)), 
-        url('../img/proje-banner.webp'); /* Resim adını kendi dosyana göre (örn: insa-banner.webp) düzenleyebilirsin */
-        
-    background-size: cover;
-    background-position: center 25%; /* İstasyon içini tam odakta tutar */
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 25px; /* Altındaki metro kutularıyla yapışmasını engeller */
+.hero{
+position:relative;
+width:calc(100% + 80px);
+height:320px;
+background-image:linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.1)), url('../img/proje-banner.webp');
+background-size:cover;
+background-position:center 25%;
+border-radius:0;
+overflow:hidden;
+margin:-40px -40px 25px -40px;
 }
 
-.hero-content {
-    position: absolute;
-    left: 40px;
-    bottom: 40px;
-    z-index: 2;
-    color: white;
-    /* Beyaz yazılar filtrenin üstünde cam gibi okunsun diye gölge */
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); 
+.hero-content{
+position:absolute;
+left:40px;
+bottom:40px;
+z-index:2;
+color:white;
+text-shadow:0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
-.hero-content h1 {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: white; /* Siyah rengi beyaz yaptık */
+.hero-content h1{
+font-size:42px;
+font-weight:700;
+margin-bottom:8px;
 }
+
 
 .hero-content p {
     font-size: 18px;
@@ -88,7 +82,6 @@ font-size:20px;
 cursor:pointer;
 background:#fff;
 color:#222;
-border-left:4px solid #333;
 transition:.2s;
 
 }
@@ -106,50 +99,67 @@ flex-shrink:0;
 }
 
 .line{
-
-background:white;
-border:1px solid #ddd;
-border-radius:10px;
-margin-bottom:12px;
-overflow:hidden;
-
+    background:white;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin-bottom:12px;
+    overflow:hidden;
+    border-left:4px solid #333;
 }
 
 
 /* Hat renkleri */
 
 
-.line-title.m4{
+/* Hat renkleri */
 
-border-left-color:#e91977;
-
-}
-
-.line-title.m5{
-
-border-left-color:#672c65;
-
+.line.m4,
+.line:has(.m4){
+    border-left-color:#e91977 !important;
 }
 
 
-.line-title.m14{
-
-border-left-color:#b16400;
-
+.line.m5,
+.line:has(.m5){
+    border-left-color:#672c65 !important;
 }
 
 
-.line-title.m10{
-
-border-left-color:#4da93e;
-
+.line.t,
+.line:has(.t){
+    border-left-color:#65656a !important;
 }
 
 
-.line-title.m13{
+.line.b1,
+.line.marmaray,
+.line:has(.b1),
+.line:has(.marmaray){
+    border-left-color:#65656a !important;
+}
 
-border-left-color:#ff4b58;
 
+.line.m,
+.line:has(.m){
+    border-left-color:#a25a2a !important;
+}
+
+
+.line.m10,
+.line:has(.m10){
+    border-left-color:#4da93e !important;
+}
+
+
+.line.m13,
+.line:has(.m13){
+    border-left-color:#ff4b58 !important;
+}
+
+
+.line.m14,
+.line:has(.m14){
+    border-left-color:#b16400 !important;
 }
 
   

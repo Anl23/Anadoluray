@@ -271,3 +271,20 @@ img{
     }
 
 }
+
+@media(max-width:800px){
+
+.top-bar{
+    display:none;
+}
+
+.content{
+    margin-top:60px !important;
+    padding-top:0 !important;
+}
+
+.hero{
+    margin-top:0 !important;
+}
+
+}

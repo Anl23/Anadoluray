@@ -32,7 +32,7 @@ background:white;
 padding:25px;
 border-right:1px solid #eef0f2;
 transition:0.3s ease;
-z-index:2000;
+z-index:99999 !important;
 box-sizing:border-box;
 overflow-y:auto;
 }
@@ -131,6 +131,7 @@ left:-280px;
 width:260px;
 height:100vh;
 padding-top:25px;
+z-index:99999 !important;
 }
 
 /* Açık sidebar */
@@ -165,7 +166,7 @@ background:white;
 align-items:center;
 padding-left:15px;
 gap:10px;
-z-index:2000;
+z-index:1000 !important;
 border-bottom:1px solid #eee;
 }
 

@@ -1,299 +1,136 @@
 /* =========================
-   MOBİL TASARIM
+   MOBİL TASARIM (GÜNCELLENMİŞ)
 ========================= */
 
-
-/* UYARI: Masaüstü tema butonu sidebar.css'de tanımlanmıştır */
-/* Burada masaüstü düzenlemesi yapılmayacak */
-
-
-@media(max-width:768px){
-
-
-body{
-
-    overflow-x:hidden;
-
-}
-
-
-
-/* İçerik */
-
-.content{
-
-    margin-left:0;
-
-    padding:20px;
-
-    padding-top:0px;
-
-}
-
-
-.hero{
-
-    margin-top:0;
-
-}
-
-
-
-
-.hero h1{
-
-    font-size:28px;
-
-    line-height:1.2;
-
-}
-
-
-.hero p{
-
-    font-size:15px;
-
-}
-
-
-
-
-.line{
-
-    width:100%;
-
-}
-
-
-
-
-img{
-
-    max-width:100%;
-
-    height:auto;
-
-}
-
-
-
-
-/* Mobil üst bar */
-
-.mobile-bar{
-
-    display:flex;
-
-    position:fixed;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    height:60px;
-
-    background:white;
-
-    align-items:center;
-
-    padding-left:15px;
-
-    gap:10px;
-
-    z-index:2000;
-
-    border-bottom:1px solid #eee;
-
-}
-
-
-
-/* Hamburger */
-
-.menu-toggle{
-
-    width:45px;
-
-    height:45px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:white;
-
-    border:none;
-
-    font-size:28px;
-
-    cursor:pointer;
-
-    color:#000;
-
-}
-
-
-
-/* Mobil tema */
-
-.theme-toggle{
-
-    width:45px;
-
-    height:45px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:white;
-
-    border:1px solid #ddd;
-
-    border-radius:12px;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-    color:#000;
-
-}
-
-
-
-
-/* Hat açıklamaları */
-
-.line-content.active{
-
-    display:flex;
-
-    flex-direction:column;
-
-}
-
-
-
-.info{
-
-    width:100%;
-
-    order:1;
-
-}
-
-
-
-.route{
-
-    width:100%;
-
-    order:2;
-
-    margin-top:25px;
-
-}
-
-
-
-.route img{
-
-    width:100%;
-
-    height:auto;
-
-    max-height:500px;
-
-    object-fit:contain;
-
-}
-
-
-
-}
-
-
-
-/* Küçük telefonlar */
-
-@media(max-width:480px){
-
-
-.content{
-
-    padding:15px;
-
-    padding-top:75px;
-
-}
-
-
-.hero h1{
-
-    font-size:24px;
-
-}
-
-
-.hero p{
-
-    font-size:14px;
-
-}
-
-
-}
-
-@media(max-width:768px){
-
-.index-content{
-    padding-top:60px;
-}
-
-}
-
-@media(max-width:800px){
-
-    .content{
-        margin-top:60px;
-        padding-top:0 !important;
+@media(max-width: 800px) {
+    body {
+        overflow-x: hidden;
     }
 
-    .hero{
-        margin-top:0;
-    }
-
-}
-
-@media(max-width: 800px){
-
-    .content{
+    /* İçerik üst boşluğu tek bir yerden yönetiliyor */
+    .content {
         margin-left: 0 !important;
-        margin-top: 0 !important; /* Üstteki gereksiz boşluğu sıfırlar */
-        padding-top: 60px !important; /* Sabit mobil barın içeriği kapatmasını önler */
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        padding-bottom: 20px !important;
+        margin-top: 60px !important; /* Mobil bar yüksekliği kadar */
+        padding: 20px !important;
     }
 
-    .hero{
-        margin: 0 -20px 25px -20px !important; /* Negatif boşlukları telefona göre dengeler */
+    /* Hero alanının üst boşluk ve taşma sorunu düzeltildi */
+    .hero {
         width: calc(100% + 40px) !important;
+        margin: -20px -20px 25px -20px !important;
+        height: 280px;
     }
 
-    .line-top{
+    .hero-content {
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .line {
+        width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Mobil üst bar */
+    .mobile-bar {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: white;
+        align-items: center;
+        padding-left: 15px;
+        gap: 10px;
+        z-index: 2000;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #000;
+    }
+
+    /* Mobil tema */
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        font-size: 22px;
+        cursor: pointer;
+        color: #000;
+    }
+
+    /* Hat açıklamaları */
+    .line-content.active {
+        display: flex;
         flex-direction: column;
     }
 
-    .line-top .route{
+    .info {
+        width: 100%;
+        order: 1;
+    }
+
+    .route {
+        width: 100%;
+        order: 2;
+        margin-top: 25px;
+    }
+
+    .route img {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        object-fit: contain;
+    }
+
+    .line-top {
+        flex-direction: column;
+    }
+
+    .line-top .route {
         width: 100%;
         max-width: 100%;
+    }
+}
+
+/* Küçük telefonlar için ek ayar */
+@media(max-width: 480px) {
+    .content {
+        padding: 15px !important;
+    }
+
+    .hero {
+        margin: -15px -15px 20px -15px !important;
+        width: calc(100% + 30px) !important;
     }
 }

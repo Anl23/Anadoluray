@@ -13,8 +13,8 @@ color:#000;
 /* İçerik */
 .content{
 margin-left:260px;
-margin-top:60px;
 padding:40px;
+padding-top:100px;
 }
 
 /* Hat kutuları */
@@ -197,12 +197,12 @@ left:0;
 
 .content{
 margin-left:0;
-margin-top:60px;
 padding:20px;
+padding-top:20px;
 }
 
 .hero{
-margin:-20px -20px 25px -20px;
+margin:-60px -20px 25px -20px;
 width:calc(100% + 40px);
 }
 

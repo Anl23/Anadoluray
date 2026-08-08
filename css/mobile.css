@@ -26,7 +26,7 @@ body{
 
     padding:20px;
 
-    padding-top:75px;
+    padding-top:0px;
 
 }
 
@@ -248,5 +248,13 @@ img{
 
 }
 
+
+}
+
+@media(max-width:768px){
+
+.index-content{
+    padding-top:60px;
+}
 
 }

@@ -178,39 +178,39 @@ font-weight:600;
 /* Mobil Uyum */
 @media(max-width:800px){
 
-.sidebar{
-position:fixed;
-left:-280px;
-top:0;
-width:260px;
-height:100vh;
-background:white;
-transition:.3s ease;
-z-index:1000;
-}
+    .sidebar{
+        position:fixed;
+        left:-280px;
+        top:0;
+        width:260px;
+        height:100vh;
+        background:white;
+        transition:.3s ease;
+        z-index:1000;
+    }
 
-.sidebar.active{
-left:0;
-}
+    .sidebar.active{
+        left:0;
+    }
 
-.content{
-margin-left:0;
-margin-top:60px;
-padding:20px;
-}
+    .content{
+        margin-left:0;
+        margin-top:60px;
+        padding:0 20px 20px 20px !important;
+    }
 
-.hero{
-margin:-20px -20px 25px -20px;
-width:calc(100% + 40px);
-}
+    .hero{
+        margin:0 -20px 25px -20px !important;
+        width:calc(100% + 40px);
+    }
 
-.line-top{
-flex-direction:column;
-}
+    .line-top{
+        flex-direction:column;
+    }
 
-.line-top .route{
-width:100%;
-max-width:100%;
-}
+    .line-top .route{
+        width:100%;
+        max-width:100%;
+    }
 
 }

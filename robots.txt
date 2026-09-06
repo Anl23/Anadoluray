@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://siteniz.com/sitemap.xml
+Sitemap: https://anadoluray.com/sitemap.xml

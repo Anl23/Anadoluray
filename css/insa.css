@@ -19,12 +19,23 @@ padding-top:100px;
 
 /* Hat kutuları */
 .line{
+position:relative;
 background:white;
 border:1px solid #ddd;
 border-radius:10px;
 margin-bottom:12px;
 overflow:hidden;
-border-left:4px solid #333;
+border-left:0;
+}
+
+.line::before{
+content:"";
+position:absolute;
+top:0;
+bottom:0;
+left:0;
+width:4px;
+background:#333;
 }
 
 .line-title{
@@ -72,6 +83,31 @@ border-left-color:#ff4b58 !important;
 .line.m14,
 .line:has(.m14){
 border-left-color:#b16400 !important;
+}
+
+.line.m4::before,
+.line:has(.m4)::before{
+background:#e91977;
+}
+
+.line.m10::before,
+.line:has(.m10)::before{
+background:#4da93e;
+}
+
+.line.m12::before,
+.line:has(.m12)::before{
+background:#cad300;
+}
+
+.line.m13::before,
+.line:has(.m13)::before{
+background:#ff4b58;
+}
+
+.line.m14::before,
+.line:has(.m14)::before{
+background:#b16400;
 }
 
 .line-title:hover{
@@ -178,7 +214,7 @@ font-weight:600;
 }
 
 /* Mobil Uyum */
-@media(max-width:800px){
+@media(max-width:768px){
 
 .sidebar{
 position:fixed;

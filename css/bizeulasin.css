@@ -1,0 +1,169 @@
+
+.contact-content{
+min-height:100vh;
+padding-top:100px;
+}
+
+.contact-panel{
+max-width:720px;
+margin:0 auto;
+background:white;
+border:1px solid #ddd;
+border-radius:12px;
+padding:36px;
+box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.contact-panel h1{
+font-size:34px;
+margin-bottom:10px;
+color:#222;
+}
+
+.contact-intro{
+margin-bottom:28px;
+color:#666;
+line-height:1.6;
+}
+
+.form-message{
+min-height:20px;
+margin-bottom:12px;
+font-size:14px;
+font-weight:600;
+}
+
+.form-success{
+color:#2e7d32;
+}
+
+.form-error{
+color:#d93025;
+}
+
+.form-field{
+display:flex;
+flex-direction:column;
+gap:8px;
+margin-bottom:20px;
+}
+
+.form-field label{
+font-size:14px;
+font-weight:700;
+color:#333;
+}
+
+.field-error{
+display:none;
+color:#d93025;
+font-size:13px;
+font-weight:600;
+}
+
+.form-field.has-error .field-error{
+display:block;
+}
+
+.form-field.has-error input,
+.form-field.has-error textarea{
+border-color:#d93025;
+}
+
+.form-field input,
+.form-field textarea{
+width:100%;
+padding:13px 14px;
+font:inherit;
+font-size:15px;
+color:#222;
+background:#fff;
+border:1px solid #d7dadd;
+border-radius:8px;
+outline:none;
+transition:border-color .2s,box-shadow .2s;
+}
+
+.form-field textarea{
+min-height:170px;
+resize:vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus{
+border-color:#605b5d;
+box-shadow:0 0 0 3px rgba(96,91,93,.12);
+}
+
+.contact-panel form button{
+width:100%;
+padding:14px 20px;
+border:0;
+border-radius:8px;
+background:#333;
+color:white;
+font:inherit;
+font-weight:700;
+cursor:pointer;
+transition:background .2s,transform .2s;
+}
+
+.contact-panel form button:hover{
+background:#555;
+transform:translateY(-1px);
+}
+
+.contact-panel form button:disabled{
+opacity:.65;
+cursor:wait;
+transform:none;
+}
+
+.dark .contact-panel{
+background:#1e1e1e;
+border-color:#333;
+}
+
+.dark .contact-panel h1,
+.dark .form-field label{
+color:white;
+}
+
+.dark .contact-intro{
+color:#bbb;
+}
+
+.dark .form-field input,
+.dark .form-field textarea{
+color:white;
+background:#252525;
+border-color:#444;
+}
+
+@media(max-width:768px){
+.content.contact-content{
+width:100%;
+margin-left:0;
+padding:80px 15px 30px;
+}
+
+.contact-panel{
+width:100%;
+max-width:none;
+padding:25px 20px;
+}
+
+.contact-panel h1{
+font-size:28px;
+}
+
+.contact-intro{
+font-size:14px;
+margin-bottom:24px;
+}
+
+.form-field input,
+.form-field textarea{
+font-size:16px;
+}
+}

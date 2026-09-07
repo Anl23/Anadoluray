@@ -12,10 +12,11 @@ background:white;
 border-bottom:1px solid #eef0f2;
 display:flex;
 align-items:center;
-justify-content:flex-end;
+justify-content:flex-start;
 padding:0 25px;
 z-index:1000;
 box-sizing:border-box;
+transition:.3s ease;
 }
 
 /* =========================
@@ -41,9 +42,34 @@ overflow-y:auto;
 .logo{
 font-size:24px;
 font-weight:700;
-margin-bottom:15px;
+margin-bottom:25px;
+padding-bottom:15px;
+margin-left:-25px;
+margin-right:-25px;
+padding-left:25px;
+padding-right:25px;
 position:relative;
 letter-spacing:-0.5px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+border-bottom:1px solid #eef0f2;
+}
+
+.sidebar-collapse{
+width:32px;
+height:32px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex:none;
+background:none;
+border:0;
+font-size:24px;
+line-height:1;
+cursor:pointer;
+color:#000;
 }
 
 /* Logo Altındaki İnce Çizgi */
@@ -56,11 +82,24 @@ margin-bottom:25px;
 
 /* Genel buton ayarları */
 .menu-toggle,
-.mobile-bar .theme-toggle{
+.theme-toggle{
 display:none;
 background:none;
 border:none;
 cursor:pointer;
+}
+
+.top-bar .menu-toggle{
+width:40px;
+height:40px;
+align-items:center;
+justify-content:center;
+background:white;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:24px;
+cursor:pointer;
+color:#000;
 }
 
 /* Masaüstü tema butonu */
@@ -76,8 +115,9 @@ border:1px solid #ddd;
 border-radius:10px;
 font-size:20px;
 cursor:pointer;
-z-index:1500;
+z-index:1002;
 transition:.2s;
+margin-left:0;
 }
 
 .desktop-theme:hover{
@@ -121,6 +161,23 @@ MOBİL
 @media(max-width:768px){
 
 .top-bar{
+display:flex;
+left:0;
+width:100%;
+height:60px;
+background:white;
+align-items:center;
+padding:0 15px;
+gap:10px;
+z-index:2000 !important;
+border-bottom:1px solid #eee;
+}
+
+body:has(.sidebar.active) .top-bar .menu-toggle{
+display:none;
+}
+
+.sidebar-collapse{
 display:none;
 }
 
@@ -154,22 +211,6 @@ display:block;
 white-space:normal;
 }
 
-/* Mobil üst bar */
-.mobile-bar{
-display:flex;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:60px;
-background:white;
-align-items:center;
-padding-left:15px;
-gap:10px;
-z-index:1000 !important;
-border-bottom:1px solid #eee;
-}
-
 /* Hamburger */
 .menu-toggle{
 display:flex;
@@ -184,24 +225,8 @@ cursor:pointer;
 color:#000;
 }
 
-/* Mobil tema */
-.mobile-bar .theme-toggle{
-display:flex;
-width:45px;
-height:45px;
-align-items:center;
-justify-content:center;
-background:white;
-border:1px solid #ddd;
-border-radius:12px;
-font-size:22px;
-cursor:pointer;
-color:#000;
-}
-
-/* Masaüstü tuşunu mobilde kapat */
 .desktop-theme{
-display:none;
+display:flex;
 }
 
 }
@@ -221,6 +246,11 @@ border-color:#333;
 }
 
 .dark .logo{
+color:white;
+border-bottom-color:#333;
+}
+
+.dark .sidebar-collapse{
 color:white;
 }
 
@@ -248,9 +278,36 @@ border-color:#333;
 background:#2a2a2a;
 }
 
-.dark .mobile-bar{
-background:#1b1b1b !important;
-border-color:#333 !important;
+body.desktop-sidebar-collapsed .sidebar{
+width:0;
+padding-left:0;
+padding-right:0;
+border-right:0;
+overflow:hidden;
+}
+
+body.desktop-sidebar-collapsed .top-bar{
+left:0;
+}
+
+body.desktop-sidebar-collapsed .top-bar{
+width:100%;
+}
+
+body.desktop-sidebar-collapsed .content{
+margin-left:0;
+}
+
+body.desktop-sidebar-collapsed .sidebar-collapse{
+display:none;
+}
+
+body.desktop-sidebar-collapsed .top-bar .menu-toggle{
+display:flex;
+}
+
+body.desktop-sidebar-collapsed .desktop-theme{
+margin-left:10px;
 }
 
 .dark .theme-toggle,

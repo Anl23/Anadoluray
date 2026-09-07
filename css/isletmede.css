@@ -178,7 +178,7 @@ font-weight:600;
 }
 
 /* Mobil Uyum */
-@media(max-width:800px){
+@media(max-width:768px){
 
 .sidebar{
 position:fixed;

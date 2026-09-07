@@ -17,16 +17,10 @@
 <body>
 
 <div class="top-bar">
-<button class="theme-toggle desktop-theme">
-🌙
-</button>
-</div>
-
-<div class="mobile-bar">
 <button class="menu-toggle">
 ☰
 </button>
-<button class="theme-toggle">
+<button class="theme-toggle desktop-theme">
 🌙
 </button>
 </div>
@@ -34,6 +28,7 @@
 <div class="sidebar">
 <div class="logo">
 AnadoluRay Arşivi
+<button class="sidebar-collapse" aria-label="Sidebarı küçült" title="Sidebarı küçült">&lt;</button>
 </div>
 <div class="menu">
 <a href="index.html"> Ana Sayfa</a>
@@ -42,6 +37,7 @@ AnadoluRay Arşivi
 <a href="proje.html"> Proje Aşamasında</a>
 <a href="fizibilite.html"> Ön Fizibilite Aşamasında</a>
 <a href="iptal.html"> İptal Edilmiş</a>
+<a href="bizeulasin.html"> Bize Ulaşın</a>
 </div>
 </div>
 
@@ -73,7 +69,7 @@ AnadoluRay Arşivi
 </p>
 </div>
 <div class="route">
-<img src="img/m4-guzergah.jpg" alt="M4 Güzergah Haritası" class="route-img">
+<img src="img/m4-guzergah.jpg" alt="M4 Güzergah Haritası" class="route-img" loading="lazy">
 </div>
 </div>
 <div class="full-width-text">
@@ -118,7 +114,7 @@ M4 hattı, 2024 yılında günlük ortalama 300.480 yolcu taşımıştır. Hatt�
 </p>
 </div>
 <div class="route">
-<img src="img/m5-guzergah.jpg" alt="M5 Güzergah Haritası" class="route-img">
+<img src="img/m5-guzergah.jpg" alt="M5 Güzergah Haritası" class="route-img" loading="lazy">
 </div>
 </div>
 <div class="full-width-text">
@@ -163,7 +159,7 @@ Hat 2024 yılında günde ortalama 293.747 yolcu taşımıştır. Tek günlük y
 </p>
 </div>
 <div class="route">
-<img src="img/m8-guzergah.jpg" alt="M8 Güzergah Haritası" class="route-img">
+<img src="img/m8-guzergah.jpg" alt="M8 Güzergah Haritası" class="route-img" loading="lazy">
 </div>
 </div>
 <div class="full-width-text">
@@ -193,7 +189,7 @@ M8 hattı, 2023 yılında günlük ortalama 43.058 yolcu taşımıştır.
 <!-- MARMARAY -->
 <div class="line b1">
 <div class="line-title marmaray" onclick="openLine(this)">
-<img src="img/b1.png" class="line-logo" alt="Marmaray"> Marmaray Anadolu Yakası Kesimi
+<img src="img/b1.png" class="line-logo" alt="B1"> B1 Marmaray Halkalı - Gebze Banliyö Hattı
 </div>
 <div class="line-content">
 <div class="line-top">
@@ -209,7 +205,7 @@ M8 hattı, 2023 yılında günlük ortalama 43.058 yolcu taşımıştır.
 </p>
 </div>
 <div class="route">
-<img src="img/marmaray-guzergah.jpg" alt="Marmaray Güzergah Haritası" class="route-img">
+<img src="img/marmaray-guzergah.jpg" alt="Marmaray Güzergah Haritası" class="route-img" loading="lazy">
 </div>
 </div>
 <div class="full-width-text">
@@ -258,7 +254,7 @@ Marmaray projesi kapsamında, batırma tüp tünel (1,4 km), delme tüneller (to
 </p>
 </div>
 <div class="route">
-<img src="img/t3-guzergah.jpg" alt="T3 Güzergah Haritası" class="route-img">
+<img src="img/t3-guzergah.jpg" alt="T3 Güzergah Haritası" class="route-img" loading="lazy">
 </div>
 </div>
 <div class="full-width-text">
@@ -284,12 +280,6 @@ T3 hattında günlük ortalama 2.500 yolcu taşınmaktadır.
 
 </div>
 
-<script>
-function openLine(element) {
-let content = element.nextElementSibling;
-content.classList.toggle("active");
-}
-</script>
 <script src="js/script.js"></script>
 </body>
 

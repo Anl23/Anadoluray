@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bize Ulaşın - AnadoluRay Arşivi</title>
+<meta name="description" content="AnadoluRay Arşivi ile iletişime geçin.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/bizeulasin.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/darkmode.css">
+</head>
+<body>
 
+<div class="top-bar">
+<button class="menu-toggle">☰</button>
+<button class="theme-toggle desktop-theme">🌙</button>
+</div>
+
+<div class="sidebar">
+<div class="logo">
+AnadoluRay Arşivi
+<button class="sidebar-collapse" aria-label="Sidebarı küçült" title="Sidebarı küçült">&lt;</button>
+</div>
+<div class="menu">
+<a href="index.html">Ana Sayfa</a>
+<a href="isletmede.html">İşletmede</a>
+<a href="insa.html">İnşa Halinde</a>
+<a href="proje.html">Proje Aşamasında</a>
+<a href="fizibilite.html">Ön Fizibilite Aşamasında</a>
+<a href="iptal.html">İptal Edilmiş</a>
+<a class="active" href="bizeulasin.html">Bize Ulaşın</a>
+</div>
+</div>
+
+<main class="content contact-content">
+<section class="contact-panel">
+<h1>Bize Ulaşın</h1>
+<p class="contact-intro">Öneri, düzeltme veya görüşlerinizi bizimle paylaşabilirsiniz.</p>
+
+<div id="form-success" class="form-message form-success" aria-live="polite"></div>
+<div id="form-error" class="form-message form-error" aria-live="polite"></div>
+
+<form class="contact-form" id="contact-form" action="https://formspree.io/f/xjyvedbr" method="POST">
+<div class="form-field">
+<label for="isim">İsminiz</label>
+<input type="text" id="isim" name="isim" autocomplete="name" required>
+<span class="field-error" aria-live="polite">Bu alan boş bırakılamaz.</span>
+</div>
+
+<div class="form-field">
+<label for="email">E-posta Adresiniz</label>
+<input type="email" id="email" name="email" autocomplete="email" required>
+<span class="field-error" aria-live="polite">Bu alan boş bırakılamaz.</span>
+</div>
+
+<div class="form-field">
+<label for="mesaj">Mesajınız</label>
+<textarea id="mesaj" name="mesaj" rows="7" required></textarea>
+<span class="field-error" aria-live="polite">Bu alan boş bırakılamaz.</span>
+</div>
+
+<button type="submit" id="submit-btn">Mesajı Gönder</button>
+</form>
+</section>
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>

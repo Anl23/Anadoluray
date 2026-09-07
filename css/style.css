@@ -52,7 +52,7 @@ font-size:38px;
 
 font-weight:700;
 
-color:#white;
+color:white;
 
 margin-bottom:15px;
 
@@ -133,6 +133,20 @@ padding-left:10px;
 }
 
 
+.line:has(img[src$="/m.png"]),
+.line:has(img[src$="/t.png"]),
+.line:has(img[src$="/tf.png"]),
+.line:has(img[src$="/h.png"]){
+border-left-color:#65656a !important;
+}
+
+.line:has(img[src$="/m.png"])::before,
+.line:has(img[src$="/t.png"])::before,
+.line:has(img[src$="/tf.png"])::before,
+.line:has(img[src$="/h.png"])::before{
+background:#65656a !important;
+}
+
 
 .card p{
 
@@ -177,16 +191,6 @@ color:#999 !important;
     padding-top:70px;
 
 }
-
-
-/* Mobil bar başka dosyada yönetiliyor */
-
-.mobile-bar{
-
-    display:flex;
-
-}
-
 
 
 .hero{

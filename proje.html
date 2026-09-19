@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/proje.css">
 <link rel="stylesheet" href="css/mobile.css">
 <link rel="stylesheet" href="css/darkmode.css">
-<script>if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");</script>
+<script>if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");</script>
 </head>
 
 <body>
@@ -68,8 +68,11 @@
 
 <div class="line m4">
 <div class="line-title m4" onclick="openLine(this)">
+<span class="line-logos">
 <img src="img/m4.png" class="line-logo" alt="M4">
-<img src="img/m10.png" class="line-logo" alt="M10"> M4-M10 Sabiha Gökçen Hvl. - Kurtköy YHT/ViaPort Metro Hattı Uzatması
+<img src="img/m10.png" class="line-logo" alt="M10">
+</span>
+M4-M10 Sabiha Gökçen Hvl. - Kurtköy YHT/ViaPort Metro Hattı Uzatması
 <span class="line-status completed">Projelendirme Tamamlandı</span>
 </div>
 <div class="line-content">
@@ -169,7 +172,7 @@
 <p>Yatırım programına alınması için başvuruda bulunuldu ancak reddedildi.</p>
 </div>
 <div class="route">
-<img src="img/maltepet-guzergah.jpg" alt="Üsküdar - Kadıköy - Maltepe Tramvay Hattı güzergahı" loading="lazy">
+<img src="img/maltepet-guzergah.png" alt="Üsküdar - Kadıköy - Maltepe Tramvay Hattı güzergahı" loading="lazy">
 </div>
 </div>
 </div>

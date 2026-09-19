@@ -54,7 +54,7 @@ color:#666;
 line-height:1.6;
 }
 </style>
-<script>if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");</script>
+<script>if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");</script>
 </head>
 <body>
 <div class="box">

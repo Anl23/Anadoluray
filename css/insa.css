@@ -50,6 +50,21 @@ color:#222;
 transition:.2s;
 }
 
+.line-status{
+margin-left:auto;
+font-size:20px;
+font-weight:700;
+white-space:nowrap;
+}
+
+.line-status.ongoing{
+color:#2f9e44;
+}
+
+.line-status.stopped{
+color:#d93025;
+}
+
 .line-logo{
 width:34px;
 height:34px;
@@ -244,6 +259,10 @@ width:calc(100% + 40px);
 
 .line-top{
 flex-direction:column;
+}
+
+.line-status{
+font-size:18px;
 }
 
 .line-top .route{

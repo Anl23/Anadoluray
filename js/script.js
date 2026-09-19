@@ -117,10 +117,10 @@ themeButtons.forEach(button => {
     button.addEventListener("click", ()=>{
 
 
-        document.body.classList.toggle("dark");
+        const isDark = document.body.classList.toggle("dark");
+        document.documentElement.classList.toggle("dark", isDark);
 
-
-        if(document.body.classList.contains("dark")){
+        if(isDark){
 
             localStorage.setItem("theme","dark");
 
@@ -137,11 +137,9 @@ themeButtons.forEach(button => {
 
 
 
-if(localStorage.getItem("theme") === "dark"){
-
-    document.body.classList.add("dark");
-
-}
+const savedTheme = localStorage.getItem("theme") === "dark";
+document.body.classList.toggle("dark", savedTheme);
+document.documentElement.classList.toggle("dark", savedTheme);
 document.addEventListener("click", function(event) {
 const sidebar = document.querySelector(".sidebar");
 const menuToggle = document.querySelector(".menu-toggle");

@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/insa.css">
 <link rel="stylesheet" href="css/mobile.css">
 <link rel="stylesheet" href="css/darkmode.css">
-<script>if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");</script>
+<script>if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");</script>
 </head>
 <body>
 <div class="top-bar">
@@ -48,7 +48,7 @@ AnadoluRay Arşivi
 <div class="line m4">
 <div class="line-title m4" onclick="openLine(this)">
 <img src="img/m4.png" class="line-logo" alt="M4B"> M4B Tavşantepe - Kaynarca Merkez Metro Hattı Uzatması
-<span class="line-status ongoing">İnşası Devam Ediyor</span>
+<span class="line-status ongoing">Devam Ediyor</span>
 </div>
 <div class="line-content">
 <div class="line-top">
@@ -98,7 +98,7 @@ M4 ana hattı ile teknik standartları aynı olan yapıda 1500V DC rijit katener
 <div class="line m10">
 <div class="line-title m10" onclick="openLine(this)">
 <img src="img/m10.png" class="line-logo" alt="M10"> M10 Pendik Merkez - Sabiha Gökçen Hvl. Metro Hattı
-<span class="line-status ongoing">İnşası Devam Ediyor</span>
+<span class="line-status ongoing">Devam Ediyor</span>
 </div>
 <div class="line-content">
 <div class="line-top">
@@ -142,7 +142,7 @@ M4 hattı ile aynı teknik standartlara sahip olan hatta 1 tünel ve 1 aç-kapa 
 <div class="line m12">
 <div class="line-title m12" onclick="openLine(this)">
 <img src="img/m12.png" class="line-logo" alt="M12"> M12 Ümraniye - Ataşehir - Göztepe Metro Hattı
-<span class="line-status ongoing"> İnşası Devam Ediyor</span>
+<span class="line-status ongoing">Devam Ediyor</span>
 </div>
 <div class="line-content">
 <div class="line-top">
@@ -199,7 +199,7 @@ M12 Ümraniye – Ataşehir – Göztepe Metro Hattı'nın ihale ilanı 11 Ağus
 <div class="line m13">
 <div class="line-title m13" onclick="openLine(this)">
 <img src="img/m13.png" class="line-logo" alt="M13"> M13 Yenidoğan - Emek Metro Hattı
-<span class="line-status stopped"> İnşası Durduruldu</span>
+<span class="line-status stopped">Durduruldu</span>
 </div>
 <div class="line-content">
 <div class="line-top">
@@ -222,7 +222,7 @@ Yenidoğan ve çevresindeki yerleşim bölgelerini ana raylı sistem hatlarına 
 <div class="line m14">
 <div class="line-title m14" onclick="openLine(this)">
 <img src="img/m14.png" class="line-logo" alt="M14"> M14 Altunizade - Bosna Bulvarı Metro Hattı
-<span class="line-status ongoing"> İnşası Devam Ediyor</span>
+<span class="line-status ongoing">Devam Ediyor</span>
 </div>
 <div class="line-content">
 <div class="line-top">

@@ -137,7 +137,8 @@ themeButtons.forEach(button => {
 
 
 
-const savedTheme = localStorage.getItem("theme") === "dark";
+const savedTheme = localStorage.getItem("theme") === "dark" ||
+    (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
 document.body.classList.toggle("dark", savedTheme);
 document.documentElement.classList.toggle("dark", savedTheme);
 document.addEventListener("click", function(event) {

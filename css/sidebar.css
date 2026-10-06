@@ -27,6 +27,12 @@ transition:.3s ease;
 
 body.desktop-sidebar-collapsed .top-bar .menu-toggle{
     display:flex;
+    order:0;
+    margin-right:20px;
+}
+
+body.desktop-sidebar-collapsed .top-bar .site-search{
+    order:1;
 }
 
 .top-bar .theme-menu{
@@ -529,6 +535,11 @@ display:none;
 
 body.desktop-sidebar-collapsed .top-bar .menu-toggle{
 display:flex;
+order:0;
+margin-right:20px;
+}
+
+body.desktop-sidebar-collapsed .top-bar .site-search{
 order:1;
 }
 

@@ -1,0 +1,215 @@
+.depo-content{
+padding-top:100px;
+}
+
+.depo-heading{
+margin-bottom:28px;
+border-left:4px solid #333;
+padding-left:14px;
+}
+
+.depo-heading h1{
+margin-bottom:8px;
+color:#222;
+font-size:32px;
+}
+
+.depo-heading p{
+max-width:760px;
+color:#666;
+line-height:1.6;
+}
+
+.depo-list{
+display:grid;
+gap:12px;
+}
+
+.depo-line{
+position:relative;
+background:#fff;
+border:1px solid #ddd;
+border-left:0;
+border-radius:10px;
+overflow:hidden;
+}
+
+.depo-line::before{
+content:"";
+position:absolute;
+top:0;
+bottom:0;
+left:0;
+width:4px;
+background:#65656a;
+}
+
+.depo-accordion-title{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:16px;
+width:100%;
+min-height:68px;
+padding:14px 48px 14px 18px;
+border:0;
+background:#fff;
+color:#222;
+font:inherit;
+text-align:left;
+cursor:pointer;
+transition:background .2s;
+}
+
+.depo-accordion-title:hover{
+background:#eee;
+}
+
+.depo-title-main{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:5px;
+min-width:0;
+}
+
+.depo-title-name{
+font-size:18px;
+font-weight:700;
+}
+
+.depo-status{
+display:inline-block;
+padding:3px 8px;
+border-radius:4px;
+font-size:12px;
+font-weight:700;
+}
+
+.depo-status.active{
+background:#e8f5eb;
+color:#287a3d;
+}
+
+.depo-status.planned{
+background:#fff4df;
+color:#8a5a00;
+}
+
+.depo-routes{
+flex:none;
+font-size:14px;
+}
+
+.depo-panel{
+max-height:0;
+padding:0 20px;
+overflow:hidden;
+opacity:0;
+pointer-events:none;
+transition:max-height .45s ease,opacity .25s ease,padding .35s ease;
+}
+
+.depo-panel.active{
+padding:20px;
+opacity:1;
+pointer-events:auto;
+}
+
+.depo-detail-grid{
+display:grid;
+grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);
+align-items:start;
+gap:24px;
+}
+
+.depo-info p{
+margin-bottom:12px;
+color:#555;
+line-height:1.6;
+}
+
+.depo-photo-frame{
+width:100%;
+aspect-ratio:16 / 9;
+margin:0;
+overflow:hidden;
+border:1px solid #ddd;
+border-radius:8px;
+background:#eee;
+}
+
+.depo-photo-frame img{
+display:block;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.depo-accordion-title:focus-visible{
+outline:3px solid #555;
+outline-offset:-3px;
+}
+
+.dark .depo-heading h1{
+color:#fff;
+}
+
+.dark .depo-heading p,
+.dark .depo-info p{
+color:#ccc;
+}
+
+.dark .depo-line{
+background:#1e1e1e;
+border-color:#333;
+}
+
+.dark .depo-accordion-title{
+background:#1e1e1e;
+color:#fff;
+}
+
+.dark .depo-accordion-title:hover{
+background:#252525;
+}
+
+.dark .depo-photo-frame{
+border-color:#444;
+background:#252525;
+}
+
+.dark .depo-status.active{
+background:#173621;
+color:#9bd6a8;
+}
+
+.dark .depo-status.planned{
+background:#3b2d14;
+color:#f2ca79;
+}
+
+@media(max-width:768px){
+.depo-content{
+padding-top:80px;
+}
+
+.depo-heading h1{
+font-size:28px;
+}
+
+.depo-accordion-title{
+align-items:flex-start;
+flex-direction:column;
+gap:8px;
+}
+
+.depo-routes{
+font-size:13px;
+}
+
+.depo-detail-grid{
+grid-template-columns:1fr;
+gap:16px;
+}
+}

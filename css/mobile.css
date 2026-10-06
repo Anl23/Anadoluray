@@ -1,0 +1,266 @@
+/* =========================
+   MOBİL TASARIM
+========================= */
+
+
+/* UYARI: Masaüstü tema butonu sidebar.css'de tanımlanmıştır */
+/* Burada masaüstü düzenlemesi yapılmayacak */
+
+
+@media(max-width:768px){
+
+.top-bar{
+    justify-content:flex-start;
+}
+
+.top-bar .menu-toggle{
+    order:1;
+    margin-right:0;
+}
+
+.top-bar .theme-toggle{
+    order:2;
+    margin-left:auto;
+}
+
+body{
+
+    overflow-x:hidden;
+
+}
+
+
+
+/* İçerik */
+
+.content{
+
+    margin-left:0;
+
+    padding:20px;
+
+    padding-top:0px;
+
+}
+
+
+.hero{
+
+    margin-top:0;
+
+}
+
+
+
+
+.hero h1{
+
+    font-size:28px;
+
+    line-height:1.2;
+
+}
+
+
+.hero p{
+
+    font-size:15px;
+
+}
+
+
+
+
+.line{
+
+    width:100%;
+
+}
+
+
+
+
+img{
+
+    max-width:100%;
+
+    height:auto;
+
+}
+
+
+
+
+/* Hamburger */
+.menu-toggle{
+
+    width:45px;
+
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:white;
+
+    border:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    color:#000;
+
+}
+
+
+
+/* Mobil tema */
+
+.theme-toggle{
+
+    width:auto;
+
+    min-width:120px;
+
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:0.02em;
+
+    cursor:pointer;
+
+    color:#000;
+
+    padding:0 16px;
+
+}
+
+
+
+
+/* Hat açıklamaları */
+
+.line-content.active{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+.info{
+
+    width:100%;
+
+    order:1;
+
+}
+
+
+
+.route{
+
+    width:100%;
+
+    order:2;
+
+    margin-top:25px;
+
+}
+
+
+
+.route img{
+
+    width:100%;
+
+    height:auto;
+
+    max-height:500px;
+
+    object-fit:contain;
+
+}
+
+.content .route img{
+    width:100%;
+    height:auto;
+    max-height:none;
+    object-fit:contain;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+}
+
+
+
+}
+
+
+
+/* Küçük telefonlar */
+
+@media(max-width:480px){
+
+
+.content{
+
+    padding:15px;
+    padding-top:0px;
+
+}
+
+
+/* Index sayfası üst bar boşluğu (hero padding tabanlı olduğundan boşluk gerekli) */
+
+.content.index-content{
+
+    padding-top:75px;
+
+}
+
+
+.hero h1{
+
+    font-size:24px;
+
+}
+
+
+.hero p{
+
+    font-size:14px;
+
+}
+
+
+}
+
+@media(max-width:768px){
+
+.index-content{
+    padding-top:60px;
+}
+
+}

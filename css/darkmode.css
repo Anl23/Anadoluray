@@ -1,0 +1,198 @@
+/* =========================
+   DARK MODE
+========================= */
+
+
+/* Genel */
+
+.dark{
+
+    background:#121212;
+    color:white;
+
+}
+
+
+/* Sayfa */
+
+.dark body{
+
+    background:#121212;
+    color:white;
+
+}
+
+
+/* İçerik */
+
+.dark .content{
+
+    background:#121212;
+
+}
+
+
+
+/* Kartlar */
+
+.dark .card,
+.dark .line,
+.dark .line-content{
+
+    background:#1e1e1e;
+    color:white;
+    border-color:#333;
+
+}
+
+
+
+/* Hat başlıkları */
+
+.dark .line-title{
+
+    background:#1e1e1e;
+    color:white;
+
+}
+
+
+.dark .line-title:hover{
+
+    background:#252525;
+    color:white;
+
+}
+
+
+/* Hat renkleri korunur */
+
+.dark .line-title.m4{
+    border-left-color:#e91977;
+}
+
+.dark .line-title.m5{
+    border-left-color:#672c65;
+}
+
+.dark .line-title.m8{
+    border-left-color:#0099ff;
+}
+
+.dark .line-title.m10{
+    border-left-color:#4da93e;
+}
+
+.dark .line-title.m13{
+    border-left-color:#ff4b58;
+}
+
+.dark .line-title.m14{
+    border-left-color:#b16400;
+}
+
+.dark .line-title.m12{
+    border-left-color:#cad300;
+}
+
+.dark .line-title.marmaray{
+    border-left-color:#008c95;
+}
+
+.dark .line-title.t,
+.dark .line-title.m{
+    border-left-color:#777;
+}
+
+
+
+/* Yazılar */
+
+.dark .info p{
+
+    color:#ddd;
+
+}
+
+.dark .info p b{
+
+    color:#fff;
+    font-weight:700;
+
+}
+
+
+.dark .hero h1{
+
+    color:white;
+
+}
+
+
+.dark .hero p{
+
+    color:#aaa;
+
+}
+
+.dark .card h2{
+
+    color:#fff;
+
+}
+
+
+.dark .card p{
+
+    color:#ddd;
+
+}
+
+.dark .content > h2{
+
+    color:#fff;
+    border-left-color:#fff;
+
+}
+
+.dark .route-placeholder{
+
+    background:#2a2a2a;
+    color:#999;
+
+}
+
+.dark .route img{
+
+    border-color:#333;
+
+}
+
+/* Full width yazılar */
+
+.dark .full-width-text h3{
+    color:#fff;
+}
+
+.dark .full-width-text p{
+    color:#ddd;
+}
+
+.dark .full-width-text p b{
+    color:#fff;
+}
+
+.dark .line-title .line-status.completed{
+    background:#173621;
+    color:#9bd6a8;
+}
+
+.dark .line-title .line-status.ongoing{
+    background:#3b2d14;
+    color:#f2ca79;
+}
+
+.dark .line-title .line-status.stopped{
+    background:#3b1d1d;
+    color:#ffaaa3;
+}

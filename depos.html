@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Depo Sahaları - AnadoluRay Arşivi</title>
+<meta name="description" content="İstanbul Anadolu Yakası raylı sistem hatlarının işletmedeki ve planlanan depo sahaları.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/depo-sahalari.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/darkmode.css">
+<script>if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");</script>
+</head>
+<body>
+<div class="top-bar">
+<div class="theme-menu">
+<button class="theme-menu-trigger" aria-expanded="false" aria-controls="theme-options">
+Tema Değiştir <span class="theme-menu-chevron" aria-hidden="true"></span>
+</button>
+<div class="theme-menu-options" id="theme-options" hidden>
+<button class="theme-option desktop-theme" data-theme="dark">Siyah Tema</button>
+<button class="theme-option desktop-theme" data-theme="light">Beyaz Tema</button>
+</div>
+</div>
+<button class="menu-toggle">☰</button>
+</div>
+
+<div class="sidebar">
+<div class="logo">
+AnadoluRay Arşivi
+<button class="sidebar-collapse" aria-label="Sidebarı küçült" title="Sidebarı küçült">&lt;</button>
+</div>
+<div class="menu">
+<a href="index.html">Ana Sayfa</a>
+<a href="isletmede.html">İşletmede</a>
+<a href="insa.html">İnşa Halinde</a>
+<a href="proje.html">Proje Aşamasında</a>
+<a href="fizibilite.html">Ön Fizibilite Aşamasında</a>
+<a href="iptal.html">İptal Edilmiş</a>
+<a class="active" href="depos.html">Depo Sahaları</a>
+<a href="bizeulasin.html">Bize Ulaşın</a>
+</div>
+</div>
+
+<main class="content depo-content">
+<header class="depo-heading">
+<h1>Depo Sahaları</h1>
+<p>Anadolu Yakası raylı sistem hatlarının işletmedeki ve planlanan depo sahaları.</p>
+</header>
+
+<section class="depo-list" aria-label="Depo sahaları">
+<article class="line depo-line">
+<button class="line-title depo-accordion-title" type="button" onclick="openLine(this)" aria-expanded="false" aria-controls="depo-maltepe">
+<span class="depo-title-main">
+<span class="depo-status active">İşletmede</span>
+<span class="depo-title-name">Maltepe Depo Sahası</span>
+</span>
+<span class="depo-routes"><b>Hat:</b> M4</span>
+</button>
+<div class="depo-panel" id="depo-maltepe">
+<div class="depo-detail-grid">
+<div class="depo-info">
+<p>M4 hattının depo sahası Maltepe'de yer almaktadır.</p>
+<p><b>Hizmet verdiği hat:</b> M4</p>
+</div>
+<figure class="depo-photo-frame">
+<img src="img/depos-maltepe.jpg" alt="Maltepe depo sahası" loading="lazy" onerror="this.hidden = true">
+</figure>
+</div>
+</div>
+</article>
+
+<article class="line depo-line">
+<button class="line-title depo-accordion-title" type="button" onclick="openLine(this)" aria-expanded="false" aria-controls="depo-behic-erkin">
+<span class="depo-title-main">
+<span class="depo-status active">İşletmede</span>
+<span class="depo-title-name">Behiç Erkin Yerleşkesi</span>
+</span>
+<span class="depo-routes"><b>Hatlar:</b> M5, M8</span>
+</button>
+<div class="depo-panel" id="depo-behic-erkin">
+<div class="depo-detail-grid">
+<div class="depo-info">
+<p>M5 ve M8 hatlarının depo sahası ve kumanda merkezi ortak olarak bu yerleşkede bulunmaktadır.</p>
+<p><b>Hizmet verdiği hatlar:</b> M5, M8</p>
+</div>
+<figure class="depo-photo-frame">
+<img src="img/depos-behic-erkin.jpg" alt="Behiç Erkin Yerleşkesi depo sahası" loading="lazy" onerror="this.hidden = true">
+</figure>
+</div>
+</div>
+</article>
+
+<article class="line depo-line">
+<button class="line-title depo-accordion-title" type="button" onclick="openLine(this)" aria-expanded="false" aria-controls="depo-kurtkoy">
+<span class="depo-title-main">
+<span class="depo-status planned">Planlanıyor</span>
+<span class="depo-title-name">Kurtköy YHT / ViaPort Depo Sahası</span>
+</span>
+<span class="depo-routes"><b>Planlanan hatlar:</b> M4, M10</span>
+</button>
+<div class="depo-panel" id="depo-kurtkoy">
+<div class="depo-detail-grid">
+<div class="depo-info">
+<p>M4/M10 uzatması kapsamında Kurtköy YHT/ViaPort istasyonundan sonra yeni bir depo sahası planlanmaktadır.</p>
+<p><b>Planlanan hatlar:</b> M4, M10</p>
+</div>
+<figure class="depo-photo-frame">
+<img src="img/depos-kurtkoy.jpg" alt="Planlanan Kurtköy YHT / ViaPort depo sahası" loading="lazy" onerror="this.hidden = true">
+</figure>
+</div>
+</div>
+</article>
+</section>
+</main>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+/* =========================
+   INDEX SAYFASI
+========================= */
+
+:root{
+    --index-bg: #f6f7f9;
+    --index-panel: rgba(255,255,255,0.88);
+    --index-line: #e9edf2;
+    --index-text: #1f2937;
+    --index-muted: #667085;
+    --index-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+}
+
+/* Hero */
+
+.hero{
+    position:relative;
+    padding:32px 28px 22px;
+    margin:0 0 32px;
+    text-align:left;
+    background:linear-gradient(135deg, rgba(255,255,255,0.92), rgba(244,246,249,0.96));
+    border:1px solid var(--index-line);
+    border-radius:22px;
+    box-shadow:var(--index-shadow);
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    top:1px;
+    bottom:1px;
+    left:1px;
+    width:4px;
+    border-radius:20px 0 0 20px;
+    background:linear-gradient(180deg, #111827, #4b5563);
+}
+
+.hero h1{
+    font-size:clamp(2rem, 3vw, 3rem);
+    line-height:1.1;
+    font-weight:700;
+    margin-bottom:12px;
+    color:var(--index-text);
+    letter-spacing:-0.04em;
+}
+
+.hero p{
+    max-width:780px;
+    font-size:1.02rem;
+    color:var(--index-muted);
+    line-height:1.7;
+    margin:0;
+}
+
+
+
+/* İstatistik başlığı */
+
+.index-content > h2,
+.stats-title{
+    font-size:1.55rem;
+    margin:28px 0 18px;
+    padding-left:12px;
+    border-left:4px solid #111827;
+    color:var(--index-text);
+    letter-spacing:-0.02em;
+}
+
+
+
+/* Kart alanı */
+
+.card-container{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:20px;
+}
+
+
+
+/* Kartlar */
+
+.card{
+    background:var(--index-panel);
+    border:1px solid var(--index-line);
+    border-radius:18px;
+    padding:24px 22px;
+    text-align:left;
+    box-shadow:0 8px 24px rgba(15, 23, 42, 0.03);
+    transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(15, 23, 42, 0.05);
+}
+
+.card h2{
+    font-size:1.05rem;
+    margin:0 0 14px;
+    color:var(--index-text);
+    font-weight:700;
+    line-height:1.4;
+}
+
+.card h2 small{
+    display:block;
+    margin-top:5px;
+    color:var(--index-muted);
+    font-size:0.78rem;
+    font-weight:600;
+}
+
+.line-count{
+    margin:0 0 18px;
+    color:var(--index-muted);
+    font-size:0.82rem !important;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+}
+
+.card p{
+    font-size:1.02rem;
+    color:var(--index-text);
+    line-height:1.6;
+    margin:0;
+}
+
+.card .line-count + .line-logos{
+    margin-top:4px;
+}
+
+.completion-section{
+    margin-top:42px;
+}
+
+.completion-list{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    padding:20px 18px;
+    background:rgba(255,255,255,0.9);
+    border:1px solid var(--index-line);
+    border-radius:18px;
+    box-shadow:var(--index-shadow);
+}
+
+.completion-heading{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:10px;
+    color:var(--index-text);
+    font-size:0.98rem;
+    font-weight:600;
+}
+
+.completion-heading span{
+    flex:1;
+    line-height:1.5;
+}
+
+.completion-opening{
+    display:block;
+    margin-top:4px;
+    color:var(--index-muted);
+    font-size:0.75rem;
+    font-weight:500;
+}
+
+.completion-footer{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.progress-track{
+    position:relative;
+    flex:1;
+    height:18px;
+    overflow:hidden;
+    background:#eef2f6;
+    border-radius:999px;
+    border:1px solid #edf1f4;
+    box-shadow:inset 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+.progress-fill{
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    border-radius:inherit;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.2);
+    z-index:1;
+}
+
+.progress-track strong{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:rgba(17, 24, 39, 0.86);
+    font-size:0.75rem;
+    font-weight:800;
+    letter-spacing:0.02em;
+}
+
+.completion-date{
+    flex:none;
+    min-width:170px;
+    text-align:right;
+    color:var(--index-muted);
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.02em;
+}
+
+.m4b-progress .progress-fill{
+    background:linear-gradient(90deg, #e91977, #ff5ba7);
+}
+
+.m10-progress .progress-fill{
+    background:linear-gradient(90deg, #4da93e, #6dcf6a);
+}
+
+.m12-progress .progress-fill{
+    background:linear-gradient(90deg, #cad300, #e3ed2f);
+}
+
+.m13-progress .progress-fill{
+    background:linear-gradient(90deg, #ff4b58, #ff7581);
+}
+
+.m14-progress .progress-fill{
+    background:linear-gradient(90deg, #b16400, #d98b17);
+}
+
+.dark .completion-list{
+    background:#1e1e1e;
+    border-color:#333;
+}
+
+.dark .completion-heading,
+.dark .card h2,
+.dark .card p,
+.dark .hero h1,
+.dark .stats-title,
+.dark .index-content > h2{
+    color:#fff;
+}
+
+.dark .m13-progress .progress-track strong{
+    color:#fff;
+}
+
+.dark .hero{
+    background:linear-gradient(135deg, rgba(30,30,30,0.9), rgba(17,17,17,0.94));
+    border-color:#2b2b2b;
+}
+
+.dark .hero::before{
+    background:linear-gradient(180deg, #f2f5f7, #9aa4b2);
+}
+
+.dark .completion-opening,
+.dark .line-count,
+.dark .card h2 small,
+.dark .hero p{
+    color:#b7bec8;
+}
+
+.dark .progress-track{
+    background:#30363d;
+    border-color:#3a3f46;
+}
+
+.dark .card,
+.dark .content{
+    background:transparent;
+}
+
+
+/* Hat logoları */
+
+.line-logos{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.stat-logo{
+    width:28px;
+    height:28px;
+    object-fit:contain;
+    filter:drop-shadow(0 4px 8px rgba(17,24,39,0.06));
+}
+
+
+
+/* MOBİL */
+
+@media(max-width:768px){
+    .hero{
+        padding:24px 18px 18px;
+        margin-bottom:24px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .hero p{
+        font-size:0.95rem;
+    }
+
+    .card-container{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:20px 18px;
+    }
+
+    .stat-logo{
+        width:34px;
+        height:34px;
+    }
+
+    .completion-section{
+        margin-top:36px;
+    }
+
+    .completion-list{
+        padding:16px 14px;
+    }
+
+    .completion-heading{
+        font-size:0.88rem;
+        gap:12px;
+    }
+}
+

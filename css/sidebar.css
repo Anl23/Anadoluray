@@ -1,0 +1,444 @@
+/* =========================
+ÜST BAR (MASAÜSTÜ)
+========================= */
+
+.top-bar{
+position:fixed;
+top:0;
+left:260px;
+width:calc(100% - 260px);
+height:60px;
+background:white;
+border-bottom:1px solid #eef0f2;
+display:flex;
+align-items:center;
+justify-content:flex-start;
+padding:0 25px;
+z-index:1000;
+box-sizing:border-box;
+transition:.3s ease;
+}
+
+.top-bar .menu-toggle{
+    order:1;
+    margin-right:0;
+    display:none;
+}
+
+body.desktop-sidebar-collapsed .top-bar .menu-toggle{
+    display:flex;
+}
+
+.top-bar .theme-menu{
+    order:2;
+    margin-left:auto;
+}
+
+.theme-menu{
+position:relative;
+z-index:1002;
+}
+
+.theme-menu-trigger{
+display:flex;
+align-items:center;
+gap:9px;
+padding:8px 0;
+border:0;
+background:transparent;
+color:#222;
+font:inherit;
+font-size:14px;
+font-weight:700;
+cursor:pointer;
+}
+
+.theme-menu-chevron{
+width:8px;
+height:8px;
+border-right:2px solid currentColor;
+border-bottom:2px solid currentColor;
+transform:translateY(-2px) rotate(45deg);
+transition:transform .2s;
+}
+
+.theme-menu-trigger[aria-expanded="true"] .theme-menu-chevron{
+transform:translateY(2px) rotate(225deg);
+}
+
+.theme-menu-options{
+position:absolute;
+top:calc(100% + 5px);
+right:0;
+display:flex;
+flex-direction:column;
+gap:0;
+width:132px;
+box-sizing:border-box;
+border:1px solid #ddd;
+border-radius:10px;
+overflow:hidden;
+}
+
+.theme-menu-options[hidden]{
+display:none;
+}
+
+/* =========================
+SIDEBAR
+========================= */
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:260px;
+height:100vh;
+background:white;
+padding:25px;
+border-right:1px solid #eef0f2;
+transition:0.3s ease;
+z-index:99999 !important;
+box-sizing:border-box;
+overflow-y:auto;
+}
+
+/* Logo */
+.logo{
+font-size:24px;
+font-weight:700;
+margin-bottom:25px;
+padding-bottom:15px;
+margin-left:-25px;
+margin-right:-25px;
+padding-left:25px;
+padding-right:25px;
+position:relative;
+letter-spacing:-0.5px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+border-bottom:1px solid #eef0f2;
+}
+
+.sidebar-collapse{
+width:32px;
+height:32px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex:none;
+background:none;
+border:0;
+font-size:24px;
+line-height:1;
+cursor:pointer;
+color:#000;
+}
+
+/* Logo Altındaki İnce Çizgi */
+.logo-divider{
+width:100%;
+height:1px;
+background-color:#eef0f2;
+margin-bottom:25px;
+}
+
+/* Genel buton ayarları */
+.menu-toggle,
+.theme-toggle{
+display:none;
+background:none;
+border:none;
+cursor:pointer;
+}
+
+.top-bar .menu-toggle{
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:white;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:24px;
+cursor:pointer;
+color:#000;
+margin-right:0;
+}
+
+/* Masaüstü tema butonu */
+.desktop-theme{
+position:static;
+width:auto;
+min-width:120px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:white;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:14px;
+font-weight:700;
+letter-spacing:0.02em;
+cursor:pointer;
+z-index:1002;
+transition:.2s;
+margin-left:auto;
+padding:0 16px;
+margin-right:0;
+}
+
+.desktop-theme:hover{
+background:#f5f5f5;
+}
+
+/* Menü */
+.menu a{
+display:flex;
+align-items:center;
+gap:10px;
+color:#444;
+text-decoration:none;
+padding:12px 16px;
+margin-bottom:8px;
+border-radius:8px;
+border-left:4px solid transparent;
+font-weight:600;
+font-size:15px;
+transition:none;
+}
+
+.menu a:hover{
+background:#f4f5f7;
+color:#000;
+padding-left:16px;
+}
+
+.menu a.active{
+background:#e3e3e3;
+border-left:4px solid #605b5d;
+color:#000;
+font-weight:700;
+padding-left:16px;
+}
+
+/* =========================
+MOBİL
+========================= */
+
+@media(max-width:768px){
+
+.top-bar{
+display:flex;
+left:0;
+width:100%;
+height:60px;
+background:white;
+align-items:center;
+padding:0 15px;
+gap:10px;
+z-index:2000 !important;
+border-bottom:1px solid #eee;
+}
+
+body.sidebar-open .top-bar .menu-toggle,
+body.sidebar-open .menu-toggle{
+display:none !important;
+}
+
+.sidebar-collapse{
+display:none;
+}
+
+/* Sidebar kapalı */
+.sidebar{
+top:0;
+left:-280px;
+width:260px;
+height:100vh;
+padding-top:25px;
+z-index:99999 !important;
+}
+
+/* Açık sidebar */
+.sidebar.active{
+left:0;
+}
+
+/* Logo */
+.logo{
+margin-top:20px;
+font-size:22px;
+}
+
+/* Menü */
+.menu{
+display:block;
+}
+
+.menu a{
+white-space:normal;
+}
+
+/* Hamburger */
+.menu-toggle{
+display:flex;
+width:45px;
+height:45px;
+align-items:center;
+justify-content:center;
+background:white;
+border:none;
+font-size:28px;
+cursor:pointer;
+color:#000;
+}
+
+.desktop-theme{
+display:flex;
+}
+
+}
+
+/* =========================
+DARK MODE
+========================= */
+
+.dark .top-bar{
+background:#1b1b1b;
+border-color:#333;
+}
+
+.dark .sidebar{
+background:#1b1b1b;
+border-color:#333;
+}
+
+.dark .logo{
+color:white;
+border-bottom-color:#333;
+}
+
+.dark .sidebar-collapse{
+color:white;
+}
+
+.dark .menu a{
+color:#ddd;
+}
+
+.dark .menu a:hover{
+background:#2a2a2a;
+color:white;
+}
+
+.dark .menu a.active{
+background:#555;
+color:white;
+}
+
+.dark .desktop-theme{
+background:#1b1b1b;
+color:white;
+border-color:#333;
+}
+
+.dark .desktop-theme:hover{
+background:#2a2a2a;
+}
+
+body.desktop-sidebar-collapsed .sidebar{
+width:0;
+padding-left:0;
+padding-right:0;
+border-right:0;
+overflow:hidden;
+}
+
+body.desktop-sidebar-collapsed .top-bar{
+left:0;
+}
+
+body.desktop-sidebar-collapsed .top-bar{
+width:100%;
+}
+
+body.desktop-sidebar-collapsed .content{
+margin-left:0;
+}
+
+body.desktop-sidebar-collapsed .sidebar-collapse{
+display:none;
+}
+
+body.desktop-sidebar-collapsed .top-bar .menu-toggle{
+display:flex;
+order:1;
+}
+
+body.desktop-sidebar-collapsed .top-bar .desktop-theme{
+margin-left:auto;
+order:2;
+}
+
+@media(min-width:769px){
+body:not(.desktop-sidebar-collapsed) .top-bar .menu-toggle{
+display:none;
+}
+}
+
+.dark .theme-toggle,
+.dark .menu-toggle{
+background:#1b1b1b !important;
+color:white !important;
+border-color:#333 !important;
+}
+
+.dark .theme-toggle:hover{
+background:#2a2a2a !important;
+}
+
+.theme-menu-options .theme-option{
+width:100%;
+min-width:0;
+height:40px;
+box-sizing:border-box;
+border:0;
+border-radius:0;
+}
+
+.theme-menu-options .theme-option + .theme-option{
+border-top:1px solid #ddd;
+}
+
+.dark .theme-menu-trigger{
+color:white;
+}
+
+.dark .theme-menu-options .theme-option{
+background:#1b1b1b;
+color:white;
+border-color:#333;
+}
+
+.dark .theme-menu-options{
+border-color:#333;
+}
+
+.dark .theme-menu-options .theme-option + .theme-option{
+border-top-color:#333;
+}
+
+.dark .theme-menu-options .theme-option:hover{
+background:#2a2a2a;
+}
+
+@media(max-width:768px){
+.theme-menu-options .theme-option{
+height:45px;
+}
+}

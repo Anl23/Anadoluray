@@ -96,9 +96,18 @@ background:#fff4df;
 color:#8a5a00;
 }
 
-.depo-routes{
+.depo-route-logos{
+display:flex;
+align-items:center;
+gap:8px;
 flex:none;
-font-size:14px;
+}
+
+.depo-route-logos img{
+display:block;
+width:32px;
+height:32px;
+object-fit:contain;
 }
 
 .depo-panel{
@@ -199,13 +208,21 @@ font-size:28px;
 }
 
 .depo-accordion-title{
-align-items:flex-start;
-flex-direction:column;
-gap:8px;
+align-items:center;
+gap:12px;
 }
 
-.depo-routes{
-font-size:13px;
+.depo-title-main{
+flex:1;
+}
+
+.depo-route-logos{
+gap:4px;
+}
+
+.depo-route-logos img{
+width:28px;
+height:28px;
 }
 
 .depo-detail-grid{

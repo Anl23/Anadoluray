@@ -15,6 +15,11 @@
 </head>
 <body>
 <div class="top-bar">
+<div class="site-search" role="search">
+<label class="visually-hidden" for="site-search-input">Site içinde ara</label>
+<input id="site-search-input" class="site-search-input" type="search" placeholder="Sitede ara..." autocomplete="off" aria-controls="site-search-results" aria-expanded="false">
+<div class="site-search-results" id="site-search-results" role="listbox" aria-label="Arama sonuçları" hidden></div>
+</div>
 <div class="theme-menu">
 <button class="theme-menu-trigger" aria-expanded="false" aria-controls="theme-options">
 Tema Değiştir <span class="theme-menu-chevron" aria-hidden="true"></span>
@@ -54,16 +59,21 @@ AnadoluRay Arşivi
 <article class="line depo-line">
 <button class="line-title depo-accordion-title" type="button" onclick="openLine(this)" aria-expanded="false" aria-controls="depo-maltepe">
 <span class="depo-title-main">
+<span class="depo-title-name">Maltepe Depolama Tünelleri</span>
 <span class="depo-status active">İşletmede</span>
-<span class="depo-title-name">Maltepe Depo Sahası</span>
 </span>
-<span class="depo-routes"><b>Hat:</b> M4</span>
+<span class="depo-route-logos" aria-label="Hatlar: M4, M10">
+<img src="img/m4.png" alt="M4">
+<img src="img/m10.png" alt="M10">
+</span>
 </button>
 <div class="depo-panel" id="depo-maltepe">
 <div class="depo-detail-grid">
 <div class="depo-info">
-<p>M4 hattının depo sahası Maltepe'de yer almaktadır.</p>
-<p><b>Hizmet verdiği hat:</b> M4</p>
+<p>Maltepe Depo Sahası, M4 hattı için tasarlanmış iki paralel tünelden oluşmaktadır. Sahaya, Küçükyalı ve Maltepe istasyonları arasındaki bağlantı makasından veya Huzurevi–Gülsuyu istasyonları arasındaki bağlantı tünelinden ulaşılabilmektedir. Ayrıca parça tedariki ve çalışanların girişi için Altayçeşme Parkı'nın altından geçen ayrı bir giriş bulunmaktadır.</p>
+<p>Depo sahası, M4 hattının Kadıköy–Kartal olarak işletildiği dönemin ihtiyaçlarına göre tasarlanmıştır. Bu nedenle 2026 yılında hizmete alınmaya başlanan Bozankaya tren setleri için yeterli depolama alanı ve altyapı bulunmamaktadır.</p>
+<p>Sahada toplam 52 vagon (13 tren seti) kapasitesi bulunur. 16 vagondan oluşan dört tren seti için periyodik bakım alanı, yine 16 vagondan oluşan dört tren seti için de ağır bakım alanı mevcuttur.</p>
+<p>Mevcut sahanın yetersiz kalması nedeniyle İBB, M4 ve M10 hatlarına hizmet verecek daha büyük bir depo sahasını Kurtköy'de inşa etmeyi planlamaktadır. Yeni deponun, M4 hattındaki tüm tren setlerini aynı anda barındırabilecek kapasitede olması öngörülmektedir. Kurtköy Depo Sahası hizmete girene kadar Bozankaya tren setlerinin geceleri istasyonlarda veya kuyruk tünellerinde depolanması gerekecektir.</p>
 </div>
 <figure class="depo-photo-frame">
 <img src="img/depos-maltepe.jpg" alt="Maltepe depo sahası" loading="lazy" onerror="this.hidden = true">
@@ -75,16 +85,29 @@ AnadoluRay Arşivi
 <article class="line depo-line">
 <button class="line-title depo-accordion-title" type="button" onclick="openLine(this)" aria-expanded="false" aria-controls="depo-behic-erkin">
 <span class="depo-title-main">
-<span class="depo-status active">İşletmede</span>
 <span class="depo-title-name">Behiç Erkin Yerleşkesi</span>
+<span class="depo-status active">İşletmede</span>
 </span>
-<span class="depo-routes"><b>Hatlar:</b> M5, M8</span>
+<span class="depo-route-logos" aria-label="Hatlar: M5, M8, M12, M13">
+<img src="img/m5.png" alt="M5">
+<img src="img/m8.png" alt="M8">
+<img src="img/m12.png" alt="M12">
+<img src="img/m13.png" alt="M13">
+</span>
 </button>
 <div class="depo-panel" id="depo-behic-erkin">
 <div class="depo-detail-grid">
 <div class="depo-info">
-<p>M5 ve M8 hatlarının depo sahası ve kumanda merkezi ortak olarak bu yerleşkede bulunmaktadır.</p>
-<p><b>Hizmet verdiği hatlar:</b> M5, M8</p>
+<p>Behiç Erkin Yerleşkesi, başlangıçta M5 Üsküdar–Samandıra Metro Hattı'nın inşasıyla paralel olarak planlanmış ve inşa edilmiştir. Tesisin rayları döşendikten kısa süre sonra M5 hattının depo sahası olarak kullanılmaya başlanmıştır. 2017–2022 yılları arasında inşaat ve tamamlanma çalışmaları sürdüğünden yerleşke bu dönemde yalnızca trenlerin depolanması amacıyla kullanılmış, M5 hattının işletme ve kontrol faaliyetleri Çarşı İstasyonu'ndan yürütülmüştür.</p>
+<p>2022 yılında tesisin diğer işlevlerinin de devreye alınmasıyla Behiç Erkin Yerleşkesi, M5 ve M8 hatlarının kontrol merkezi, bakım ve depolama tesisi hâline gelmiştir. Gelecekte M12 ve M13 hatlarının yönetim ve depolama faaliyetlerinin de bu yerleşkeden yürütülmesi planlanmaktadır.</p>
+<p>Tesiste, toplam 60 vagonun ağır ve periyodik bakımının gerçekleştirilebileceği bir bakım atölyesi bulunmaktadır. Yerleşke, 40 M8 treni, 40 M12 treni ve 150 M5 treninin depolanmasına hizmet vermektedir.</p>
+<p>Yerleşkede iki katlı ek bir depolama alanının inşası devam etmektedir. Bu bölümün tamamlanmasıyla tesisin toplam kapasitesinin yaklaşık 600 vagona ulaşması öngörülmektedir.</p>
+<p>Geçmişte M4 hattının depo sahasının Behiç Erkin Yerleşkesi'ne taşınmasına yönelik planlar da gündeme gelmiştir. Ancak M4 hattında kullanılan araç filosunun büyüklüğü ve yerleşkenin M4 hattına doğrudan bağlantısını sağlayacak bir bağlantı tünelinin bulunmaması nedeniyle bu planlardan vazgeçilmiştir. Bunun yerine, M4 hattının artan araç filosuna hizmet verebilmesi amacıyla Kurtköy'de yeni ve daha büyük bir depo sahasının oluşturulması planlanmıştır.</p>
+<p><b>Hatların depo sahasına erişimi</b></p>
+<p><b>M5:</b> Depo sahasına, M5 hattının Necip Fazıl ve Dudullu istasyonları arasında bulunan yaklaşık 2.700 metre uzunluğundaki çift tüp bağlantı tünelleri üzerinden ulaşılmaktadır.</p>
+<p><b>M8:</b> M8 hattı, Parseller İstasyonu'ndan sonra yaklaşık 300 metre boyunca düz şekilde devam ederek Behiç Erkin Yerleşkesi'ne ulaşmaktadır.</p>
+<p><b>M12:</b> M12 hattının tesisi ağırlıklı olarak periyodik bakım amacıyla kullanması planlanmaktadır. Hatta kullanılacak trenlerin gece depolaması ise M12'nin kendi geceleme ve depolama tünellerinde gerçekleştirilecektir.</p>
+<p><b>M13:</b> M13 hattının Behiç Erkin Yerleşkesi'ne, Sarıgazi ile Sancaktepe Şehir Hastanesi istasyonları arasında bulunan yaklaşık 750 metre uzunluğundaki bağlantı tüneli üzerinden ulaşması planlanmaktadır.</p>
 </div>
 <figure class="depo-photo-frame">
 <img src="img/depos-behic-erkin.jpg" alt="Behiç Erkin Yerleşkesi depo sahası" loading="lazy" onerror="this.hidden = true">
@@ -96,19 +119,43 @@ AnadoluRay Arşivi
 <article class="line depo-line">
 <button class="line-title depo-accordion-title" type="button" onclick="openLine(this)" aria-expanded="false" aria-controls="depo-kurtkoy">
 <span class="depo-title-main">
+<span class="depo-title-name">Kurtköy Depo Sahası</span>
 <span class="depo-status planned">Planlanıyor</span>
-<span class="depo-title-name">Kurtköy YHT / ViaPort Depo Sahası</span>
 </span>
-<span class="depo-routes"><b>Planlanan hatlar:</b> M4, M10</span>
+<span class="depo-route-logos" aria-label="Planlanan hatlar: M4, M10">
+<img src="img/m4.png" alt="M4">
+<img src="img/m10.png" alt="M10">
+</span>
 </button>
 <div class="depo-panel" id="depo-kurtkoy">
 <div class="depo-detail-grid">
 <div class="depo-info">
 <p>M4/M10 uzatması kapsamında Kurtköy YHT/ViaPort istasyonundan sonra yeni bir depo sahası planlanmaktadır.</p>
-<p><b>Planlanan hatlar:</b> M4, M10</p>
 </div>
 <figure class="depo-photo-frame">
-<img src="img/depos-kurtkoy.jpg" alt="Planlanan Kurtköy YHT / ViaPort depo sahası" loading="lazy" onerror="this.hidden = true">
+<img src="img/depos-kurtkoy.jpg" alt="Planlanan Kurtköy depo sahası" loading="lazy" onerror="this.hidden = true">
+</figure>
+</div>
+</div>
+</article>
+
+<article class="line depo-line">
+<button class="line-title depo-accordion-title" type="button" onclick="openLine(this)" aria-expanded="false" aria-controls="depo-m12-geceleme">
+<span class="depo-title-main">
+<span class="depo-title-name">M12 Geceleme Tünelleri</span>
+<span class="depo-status planned">İnşa Hâlinde</span>
+</span>
+<span class="depo-route-logos" aria-label="Hat: M12">
+<img src="img/m12.png" alt="M12">
+</span>
+</button>
+<div class="depo-panel" id="depo-m12-geceleme">
+<div class="depo-detail-grid">
+<div class="depo-info">
+<p>M12 hattında, Finans Merkezi İstasyonu sonrasında trenlerin gece depolanması için iki geceleme tüneli bulunmaktadır. Tüneller, M12 hattının 4 vagonlu tren setlerine göre tasarlanmıştır.</p>
+</div>
+<figure class="depo-photo-frame">
+<img src="img/depos-m12-geceleme.jpg" alt="M12 geceleme tünelleri" loading="lazy" onerror="this.hidden = true">
 </figure>
 </div>
 </div>

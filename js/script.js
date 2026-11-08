@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function updateLineContentHeight(content){
 
     if(content?.classList.contains("active") && content.style.maxHeight !== "none"){
@@ -14,6 +15,8 @@ function allowLineContentToGrow(content){
 
 }
 
+=======
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 function openLine(element){
 
     const content = element.nextElementSibling;
@@ -28,6 +31,7 @@ function openLine(element){
     element.setAttribute("aria-expanded", String(!isOpen));
 
     if(content.classList.contains("active")){
+<<<<<<< HEAD
         const releaseMaxHeight = event=>{
             if(event.target !== content || event.propertyName !== "max-height"){
                 return;
@@ -44,6 +48,11 @@ function openLine(element){
         window.dispatchEvent(new CustomEvent("line-content-opened", {
             detail: content
         }));
+=======
+        const contentHeight = content.scrollHeight + 40;
+        content.style.maxHeight = `${contentHeight}px`;
+        content.style.opacity = "1";
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
     }else{
         content.style.maxHeight = "0px";
         content.style.opacity = "0";
@@ -75,7 +84,11 @@ function getRemainingText(targetDate){
     const difference = target - now;
 
     if(difference <= 0){
+<<<<<<< HEAD
         return [{ text: "Açıldı" }];
+=======
+        return "Açıldı";
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
     }
 
     let years = target.getFullYear() - now.getFullYear();
@@ -109,6 +122,7 @@ function getRemainingText(targetDate){
     }
 
     if(parts.length === 0){
+<<<<<<< HEAD
         return [{ text: "Bugün" }];
     }
 
@@ -116,6 +130,12 @@ function getRemainingText(targetDate){
         text,
         isDays: index === parts.length - 1 && days > 0
     }));
+=======
+        return "Bugün";
+    }
+
+    return parts.join(" ");
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 
 }
 
@@ -131,6 +151,7 @@ function updateCountdowns(){
         }
 
         const targetDate = item.dataset.target;
+<<<<<<< HEAD
         dateNode.replaceChildren();
         getRemainingText(targetDate).forEach((part, index) => {
             if(index > 0){
@@ -146,6 +167,9 @@ function updateCountdowns(){
                 dateNode.append(part.text);
             }
         });
+=======
+        dateNode.textContent = `Kalan süre: ${getRemainingText(targetDate)}`;
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
     });
 
 }
@@ -153,6 +177,7 @@ function updateCountdowns(){
 updateCountdowns();
 setInterval(updateCountdowns, 60000);
 
+<<<<<<< HEAD
 let leafletLoadPromise;
 const routeGeometryCache = new Map();
 const routeMaps = new WeakMap();
@@ -599,6 +624,8 @@ async function initializeVisionMap(){
 
 initializeVisionMap();
 
+=======
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 const contactForm = document.querySelector(".contact-form");
 
 if(contactForm){

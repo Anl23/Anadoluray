@@ -177,6 +177,7 @@
     gap:14px;
 }
 
+<<<<<<< HEAD
 .completion-logo{
     flex:none;
     width:28px;
@@ -188,6 +189,11 @@
     position:relative;
     flex:1;
     min-width:0;
+=======
+.progress-track{
+    position:relative;
+    flex:1;
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
     height:18px;
     overflow:hidden;
     background:#eef2f6;
@@ -206,6 +212,7 @@
     z-index:1;
 }
 
+<<<<<<< HEAD
 .completion-percent{
     flex:none;
     min-width:2.8em;
@@ -215,6 +222,19 @@
     font-weight:800;
     letter-spacing:0.02em;
     line-height:1.2;
+=======
+.progress-track strong{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:rgba(17, 24, 39, 0.86);
+    font-size:0.75rem;
+    font-weight:800;
+    letter-spacing:0.02em;
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 }
 
 .completion-date{
@@ -227,6 +247,7 @@
     letter-spacing:0.02em;
 }
 
+<<<<<<< HEAD
 .completion-days{
     color:#344054;
     font-size:0.9rem;
@@ -322,45 +343,62 @@
     color:#84adff;
 }
 
+=======
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 .m4b-progress .progress-fill{
     background:linear-gradient(90deg, #e91977, #ff5ba7);
 }
 
+<<<<<<< HEAD
 .m4b-progress .completion-percent{
     color:#e91977;
 }
 
+=======
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 .m10-progress .progress-fill{
     background:linear-gradient(90deg, #4da93e, #6dcf6a);
 }
 
+<<<<<<< HEAD
 .m10-progress .completion-percent{
     color:#4da93e;
 }
 
+=======
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 .m12-progress .progress-fill{
     background:linear-gradient(90deg, #cad300, #e3ed2f);
 }
 
+<<<<<<< HEAD
 .m12-progress .completion-percent{
     color:#899000;
 }
 
+=======
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 .m13-progress .progress-fill{
     background:linear-gradient(90deg, #ff4b58, #ff7581);
 }
 
+<<<<<<< HEAD
 .m13-progress .completion-percent{
     color:#ff4b58;
 }
 
+=======
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 .m14-progress .progress-fill{
     background:linear-gradient(90deg, #b16400, #d98b17);
 }
 
+<<<<<<< HEAD
 .m14-progress .completion-percent{
     color:#b16400;
 }
+=======
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 .dark .completion-list{
     background:#1e1e1e;
     border-color:#333;
@@ -375,6 +413,13 @@
     color:#fff;
 }
 
+<<<<<<< HEAD
+=======
+.dark .m13-progress .progress-track strong{
+    color:#fff;
+}
+
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1
 .dark .hero{
     background:linear-gradient(135deg, rgba(30,30,30,0.9), rgba(17,17,17,0.94));
     border-color:#2b2b2b;
@@ -462,6 +507,7 @@
         font-size:0.88rem;
         gap:12px;
     }
+<<<<<<< HEAD
 
     .completion-footer{
         flex-wrap:wrap;
@@ -483,3 +529,7 @@
         min-height:340px;
     }
 }
+=======
+}
+
+>>>>>>> 29d504e72ead83bf4faac454f386b760a73200d1

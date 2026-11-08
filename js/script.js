@@ -154,7 +154,8 @@ updateCountdowns();
 setInterval(updateCountdowns, 60000);
 
 let leafletLoadPromise;
-const routeGeometryCache = new Map();
+let mapLibreLayerPromise;
+const routeDataCache = new Map();
 const routeMaps = new WeakMap();
 const routeMapBounds = new WeakMap();
 
@@ -195,6 +196,58 @@ function loadLeaflet(){
     });
 
     return leafletLoadPromise;
+
+}
+
+function loadMapLibreLayer(){
+
+    if(window.MaplibreGLLeaflet?.maplibreGL){
+        return Promise.resolve(window.MaplibreGLLeaflet.maplibreGL);
+    }
+
+    if(mapLibreLayerPromise){
+        return mapLibreLayerPromise;
+    }
+
+    const mapLibreCss = document.createElement("link");
+    mapLibreCss.rel = "stylesheet";
+    mapLibreCss.href = "https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css";
+    mapLibreLayerPromise = new Promise((resolve, reject)=>{
+        mapLibreCss.onload = resolve;
+        mapLibreCss.onerror = ()=>reject(new Error("MapLibre GL stilleri yüklenemedi."));
+        document.head.append(mapLibreCss);
+    }).then(()=>new Promise((resolve, reject)=>{
+        const mapLibreScript = document.createElement("script");
+        mapLibreScript.src = "https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js";
+        mapLibreScript.onload = ()=>{
+            const leafletAdapterScript = document.createElement("script");
+            leafletAdapterScript.src = "https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.4/leaflet-maplibre-gl.js";
+            leafletAdapterScript.onload = ()=>{
+                const maplibreGL = window.MaplibreGLLeaflet?.maplibreGL;
+                if(!maplibreGL){
+                    reject(new Error("MapLibre Leaflet bağdaştırıcısı yüklenemedi."));
+                    return;
+                }
+                resolve(maplibreGL);
+            };
+            leafletAdapterScript.onerror = ()=>reject(new Error("MapLibre Leaflet bağdaştırıcısı yüklenemedi."));
+            document.head.append(leafletAdapterScript);
+        };
+        mapLibreScript.onerror = ()=>reject(new Error("MapLibre GL kütüphanesi yüklenemedi."));
+        document.head.append(mapLibreScript);
+    }));
+
+    return mapLibreLayerPromise;
+
+}
+
+async function addDarkMapLayer(map){
+
+    const maplibreGL = await loadMapLibreLayer();
+    maplibreGL({
+        style: "https://tiles.openfreemap.org/styles/dark"
+    }).addTo(map);
+
 }
 
 function getOsmRouteIds(route){
@@ -213,6 +266,93 @@ function getOsmRouteIds(route){
 
 }
 
+function deduplicateOsmStations(stations){
+
+    const uniqueStations = [];
+
+    stations.forEach(station => {
+        const normalizedName = station.name.trim().toLocaleLowerCase("tr-TR");
+        const isDuplicate = uniqueStations.some(existing => {
+            if(existing.normalizedName !== normalizedName){
+                return false;
+            }
+
+            const latitudeDifference = (existing.coordinates[0] - station.coordinates[0]) * 111320;
+            const longitudeDifference = (existing.coordinates[1] - station.coordinates[1]) *
+                111320 * Math.cos(station.coordinates[0] * Math.PI / 180);
+            return Math.hypot(latitudeDifference, longitudeDifference) < 120;
+        });
+
+        if(!isDuplicate){
+            uniqueStations.push({
+                ...station,
+                normalizedName
+            });
+        }
+    });
+
+    return uniqueStations.map(({ name, coordinates }) => ({ name, coordinates }));
+
+}
+
+function getOsmStations(elements){
+
+    const stationTypes = {
+        public_transport: ["station", "stop_position", "platform"],
+        railway: ["station", "halt", "tram_stop", "stop", "platform"]
+    };
+    const stationMemberIds = new Set(
+        elements.flatMap(element => element.type === "relation"
+            ? (element.members || [])
+                .filter(member => /(?:^|_)(?:stop|station)(?:_|$)/i.test(member.role))
+                .map(member => `${member.type}/${member.ref}`)
+            : [])
+    );
+    const hasStationMembers = stationMemberIds.size > 0;
+    const nodeCoordinates = new Map(
+        elements
+            .filter(element => element.type === "node" &&
+                Number.isFinite(element.lat) && Number.isFinite(element.lon))
+            .map(node => [node.id, [node.lat, node.lon]])
+    );
+    const stations = elements.flatMap(element => {
+        if(!["node", "way"].includes(element.type)){
+            return [];
+        }
+
+        const tags = element.tags || {};
+        const isStation = hasStationMembers
+            ? stationMemberIds.has(`${element.type}/${element.id}`)
+            : Object.entries(stationTypes).some(([tag, values]) => values.includes(tags[tag]));
+        const name = tags.name || tags["name:tr"];
+
+        if(!isStation || !name){
+            return [];
+        }
+
+        let coordinates;
+        if(element.type === "node" && Number.isFinite(element.lat) && Number.isFinite(element.lon)){
+            coordinates = [element.lat, element.lon];
+        }else if(element.type === "way"){
+            const points = element.geometry
+                ? element.geometry.map(point => [point.lat, point.lon])
+                : element.nodes?.map(nodeId => nodeCoordinates.get(nodeId)).filter(Boolean) || [];
+
+            if(points.length){
+                coordinates = points.reduce((total, point) => [
+                    total[0] + point[0] / points.length,
+                    total[1] + point[1] / points.length
+                ], [0, 0]);
+            }
+        }
+
+        return coordinates ? [{ name, coordinates }] : [];
+    });
+
+    return deduplicateOsmStations(stations);
+
+}
+
 async function fetchOsmRouteId(osmId, osmType = ""){
     const id = osmId ? Number(osmId) : 0;
     if(osmId && (!Number.isSafeInteger(id) || id <= 0)){
@@ -224,8 +364,8 @@ async function fetchOsmRouteId(osmId, osmType = ""){
     }
 
     const cacheKey = `${osmType || "auto"}:${id}`;
-    if(routeGeometryCache.has(cacheKey)){
-        return routeGeometryCache.get(cacheKey);
+    if(routeDataCache.has(cacheKey)){
+        return routeDataCache.get(cacheKey);
     }
 
     const endpoints = (osmType ? [osmType] : ["relation", "way"]).map(type =>
@@ -271,8 +411,12 @@ async function fetchOsmRouteId(osmId, osmType = ""){
                 throw new Error(`OSM ${id} kimliği güzergâh vektörü içermiyor.`);
             }
 
-            routeGeometryCache.set(cacheKey, segments);
-            return segments;
+            const routeData = {
+                segments,
+                stations: getOsmStations(elements)
+            };
+            routeDataCache.set(cacheKey, routeData);
+            return routeData;
         }catch(error){
             lastError = error;
         }
@@ -283,10 +427,13 @@ async function fetchOsmRouteId(osmId, osmType = ""){
 
 async function fetchOsmRoute(route){
     const routeIds = getOsmRouteIds(route);
-    const geometries = await Promise.all(
+    const routeData = await Promise.all(
         routeIds.map(({ id, type }) => fetchOsmRouteId(id, type))
     );
-    return geometries.flat();
+    return {
+        segments: routeData.flatMap(data => data.segments),
+        stations: deduplicateOsmStations(routeData.flatMap(data => data.stations))
+    };
 }
 
 async function initializeOsmRoute(route){
@@ -302,10 +449,11 @@ async function initializeOsmRoute(route){
 
     const routeName = getOsmRouteName(route);
     try{
-        const [leaflet, segments] = await Promise.all([
+        const [leaflet, routeData] = await Promise.all([
             loadLeaflet(),
             fetchOsmRoute(route)
         ]);
+        const { segments, stations } = routeData;
 
         if(segments.length === 0){
             throw new Error(`OSM ${route.dataset.osmId} kimliği güzergâh verisi içermiyor.`);
@@ -314,16 +462,13 @@ async function initializeOsmRoute(route){
         const mapElement = document.createElement("div");
         mapElement.className = "osm-route-map";
         mapElement.setAttribute("role", "region");
-        mapElement.setAttribute("aria-label", `${routeName} interaktif OpenStreetMap`);
+        mapElement.setAttribute("aria-label", `${routeName} interaktif harita`);
         route.append(mapElement);
         allowLineContentToGrow(route.closest(".line-content"));
 
-        const map = leaflet.map(mapElement, { scrollWheelZoom: true });
-        leaflet.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            maxZoom: 19,
-            updateWhenIdle: true,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap katkıda bulunanlar</a>'
-        }).addTo(map);
+        const map = leaflet.map(mapElement, { scrollWheelZoom: true })
+            .setView([40.98, 29.12], 10);
+        await addDarkMapLayer(map);
 
         const color = route.dataset.osmColor || "#e91977";
         const routeLines = leaflet.featureGroup(
@@ -333,6 +478,17 @@ async function initializeOsmRoute(route){
                 opacity: 0.9
             }))
         ).addTo(map);
+        stations.forEach(station => {
+            const popup = document.createElement("span");
+            popup.textContent = station.name;
+            leaflet.circleMarker(station.coordinates, {
+                radius: 5,
+                color,
+                weight: 2,
+                fillColor: "#ffffff",
+                fillOpacity: 1
+            }).bindPopup(popup).addTo(map);
+        });
 
         const bounds = routeLines.getBounds();
         map.fitBounds(bounds, { padding: [20, 20] });
@@ -478,12 +634,9 @@ async function initializeVisionMap(){
                 return { page, html: await response.text() };
             }))
         ]);
-        const map = leaflet.map(mapElement, { scrollWheelZoom: true });
-        leaflet.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            maxZoom: 19,
-            updateWhenIdle: true,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap katkıda bulunanlar</a>'
-        }).addTo(map);
+        const map = leaflet.map(mapElement, { scrollWheelZoom: true })
+            .setView([40.98, 29.12], 10);
+        await addDarkMapLayer(map);
         const routes = [];
         const seenIds = new Set();
         const legendedLines = new Set();
@@ -528,13 +681,24 @@ async function initializeVisionMap(){
 
         for(const route of routes){
             try{
-                const segments = await fetchOsmRouteId(route.id, route.type);
-                const lineLayers = segments.map(coordinates => leaflet.polyline(coordinates, {
+                const routeData = await fetchOsmRouteId(route.id, route.type);
+                const lineLayers = routeData.segments.map(coordinates => leaflet.polyline(coordinates, {
                     color: route.color,
                     weight: 5,
                     opacity: 0.9
                 }));
                 const group = leaflet.featureGroup(lineLayers).addTo(map);
+                routeData.stations.forEach(station => {
+                    const popup = document.createElement("span");
+                    popup.textContent = station.name;
+                    leaflet.circleMarker(station.coordinates, {
+                        radius: 5,
+                        color: route.color,
+                        weight: 2,
+                        fillColor: "#ffffff",
+                        fillOpacity: 1
+                    }).bindPopup(popup).addTo(map);
+                });
                 const popupLink = document.createElement("a");
                 popupLink.className = "vision-map-popup-link";
                 popupLink.href = route.href;
@@ -598,79 +762,6 @@ async function initializeVisionMap(){
 }
 
 initializeVisionMap();
-
-const contactForm = document.querySelector(".contact-form");
-
-if(contactForm){
-
-    const requiredFields = contactForm.querySelectorAll("[required]");
-
-    requiredFields.forEach(field => {
-
-        field.addEventListener("invalid", ()=>{
-            field.parentElement.classList.add("has-error");
-        });
-
-        field.addEventListener("input", ()=>{
-            if(field.value.trim()){
-                field.parentElement.classList.remove("has-error");
-            }
-        });
-
-    });
-
-    contactForm.addEventListener("submit", async event => {
-
-        event.preventDefault();
-
-        let hasEmptyField = false;
-        const success = document.querySelector("#form-success");
-        const error = document.querySelector("#form-error");
-        const button = document.querySelector("#submit-btn");
-
-        requiredFields.forEach(field => {
-            const isEmpty = !field.value.trim();
-            field.parentElement.classList.toggle("has-error", isEmpty);
-            hasEmptyField = hasEmptyField || isEmpty;
-        });
-
-        if(hasEmptyField){
-            return;
-        }
-
-        button.disabled = true;
-        button.textContent = "Gönderiliyor...";
-        success.textContent = "";
-        error.textContent = "";
-
-        try{
-
-            const response = await fetch(contactForm.action, {
-                method: "POST",
-                body: new FormData(contactForm),
-                headers: {
-                    Accept: "application/json"
-                }
-            });
-
-            if(response.ok){
-                contactForm.reset();
-                success.textContent = "Mesajınız başarıyla gönderildi!";
-            }else{
-                error.textContent = "Mesaj gönderilirken bir hata oluştu.";
-            }
-
-        }catch(errorResponse){
-            error.textContent = "Bağlantı hatası oluştu. Lütfen tekrar deneyin.";
-        }finally{
-            button.disabled = false;
-            button.textContent = "Mesajı Gönder";
-        }
-
-    });
-
-}
-
 
 // Hamburger menü
 
@@ -773,12 +864,12 @@ if(siteSearch){
     const searchablePages = [
         { url: "index.html", title: "Ana Sayfa" },
         { url: "isletmede.html", title: "İşletmede" },
+        { url: "yolcu-istatistikleri.html", title: "Yolcu İstatistikleri" },
         { url: "insa.html", title: "İnşa Halinde" },
         { url: "proje.html", title: "Proje Aşamasında" },
         { url: "fizibilite.html", title: "Ön Fizibilite Aşamasında" },
         { url: "iptal.html", title: "İptal Edilmiş" },
-        { url: "depos.html", title: "Depo Sahaları" },
-        { url: "bizeulasin.html", title: "Bize Ulaşın" }
+        { url: "depos.html", title: "Depo Sahaları" }
     ];
     let searchIndexPromise;
 

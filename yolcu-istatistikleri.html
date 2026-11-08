@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Yolcu İstatistikleri - AnadoluRay Arşivi</title>
+<meta name="description" content="İstanbul Anadolu Yakası'ndaki işletmedeki raylı sistem hatlarının yolcu istatistikleri.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/isletmede.css">
+<link rel="stylesheet" href="css/yolcu-istatistikleri.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/darkmode.css">
+<script>if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");</script>
+</head>
+
+<body class="statistics-page">
+<div class="top-bar">
+<div class="site-search" role="search">
+<label class="visually-hidden" for="site-search-input">Site içinde ara</label>
+<input id="site-search-input" class="site-search-input" type="search" placeholder="Sitede ara..." autocomplete="off" aria-controls="site-search-results" aria-expanded="false">
+<div class="site-search-results" id="site-search-results" role="listbox" aria-label="Arama sonuçları" hidden></div>
+</div>
+<div class="theme-menu">
+<button class="theme-menu-trigger" aria-expanded="false" aria-controls="theme-options">
+Tema Değiştir <span class="theme-menu-chevron" aria-hidden="true"></span>
+</button>
+<div class="theme-menu-options" id="theme-options" hidden>
+<button class="theme-option desktop-theme" data-theme="dark">Siyah Tema</button>
+<button class="theme-option desktop-theme" data-theme="light">Beyaz Tema</button>
+</div>
+</div>
+<button class="menu-toggle">☰</button>
+</div>
+
+<div class="sidebar">
+<div class="logo">
+AnadoluRay Arşivi
+<button class="sidebar-collapse" aria-label="Sidebarı küçült" title="Sidebarı küçült">&lt;</button>
+</div>
+<div class="menu">
+<a href="index.html">Ana Sayfa</a>
+<a href="isletmede.html">İşletmede</a>
+<a href="insa.html">İnşa Halinde</a>
+<a href="proje.html">Proje Aşamasında</a>
+<a href="fizibilite.html">Ön Fizibilite Aşamasında</a>
+<a href="iptal.html">İptal Edilmiş</a>
+<a href="depos.html">Depo Sahaları</a>
+<a class="active" href="yolcu-istatistikleri.html">Yolcu İstatistikleri</a>
+</div>
+</div>
+
+<div class="content">
+<div class="hero">
+<div class="hero-content">
+<h1>Yolcu İstatistikleri</h1>
+<p>Hatlara göre yolcu verileri ve dönemsel karşılaştırmalar.</p>
+</div>
+</div>
+
+<div class="statistics-intro">
+<span class="statistics-count">5 hat</span>
+<p>Bir hattın istatistik tablosunu görüntülemek için başlığı seçin.</p>
+</div>
+
+<details class="line m4 statistics-line">
+<summary class="line-title"><img src="img/m4.png" class="line-logo" alt="M4"> M4 Kadıköy - Sabiha Gökçen Havalimanı Metro Hattı</summary>
+<div class="statistics-table-wrap">
+<table class="statistics-table">
+<thead><tr><th scope="col">Gösterge</th><th scope="col">Dönem</th><th scope="col">Yolcu sayısı</th></tr></thead>
+<tbody>
+<tr><th scope="row">Günlük ortalama</th><td>2024</td><td>300.480</td></tr>
+<tr><th scope="row">Günlük taşıma rekoru</th><td>2023</td><td>387.372</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+
+<details class="line m5 statistics-line">
+<summary class="line-title"><img src="img/m5.png" class="line-logo" alt="M5"> M5 Üsküdar - Sultanbeyli Metro Hattı</summary>
+<div class="statistics-table-wrap">
+<table class="statistics-table">
+<thead><tr><th scope="col">Gösterge</th><th scope="col">Dönem</th><th scope="col">Yolcu sayısı</th></tr></thead>
+<tbody>
+<tr><th scope="row">Günlük ortalama</th><td>2024</td><td>293.747</td></tr>
+<tr><th scope="row">Günlük taşıma rekoru</th><td>2023</td><td>345.194</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+
+<details class="line m8 statistics-line">
+<summary class="line-title"><img src="img/m8.png" class="line-logo" alt="M8"> M8 Bostancı - Parseller Metro Hattı</summary>
+<div class="statistics-table-wrap">
+<table class="statistics-table">
+<thead><tr><th scope="col">Gösterge</th><th scope="col">Dönem</th><th scope="col">Yolcu sayısı</th></tr></thead>
+<tbody>
+<tr><th scope="row">Günlük ortalama</th><td>2023</td><td>43.058</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+
+<details class="line b1 statistics-line">
+<summary class="line-title"><img src="img/b1.png" class="line-logo" alt="B1"> B1 Marmaray Halkalı - Gebze Banliyö Hattı</summary>
+<div class="statistics-table-wrap">
+<table class="statistics-table">
+<thead><tr><th scope="col">Gösterge</th><th scope="col">Dönem</th><th scope="col">Yolcu sayısı</th></tr></thead>
+<tbody>
+<tr><th scope="row">Yıllık toplam</th><td>2022</td><td>190.754.000</td></tr>
+<tr><th scope="row">Günlük ortalama</th><td>2022</td><td>522.614</td></tr>
+<tr><th scope="row">Yıllık toplam</th><td>2024</td><td>218.886.016</td></tr>
+<tr><th scope="row">Günlük ortalama</th><td>2024</td><td>604.657</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+
+<details class="line t3 statistics-line">
+<summary class="line-title"><img src="img/t3.png" class="line-logo" alt="T3"> T3 Kadıköy - Moda Nostaljik Tramvay Hattı</summary>
+<div class="statistics-table-wrap">
+<table class="statistics-table">
+<thead><tr><th scope="col">Gösterge</th><th scope="col">Dönem</th><th scope="col">Yolcu sayısı</th></tr></thead>
+<tbody>
+<tr><th scope="row">Günlük ortalama</th><td>Güncel veri</td><td>2.500</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+
+</html>

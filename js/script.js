@@ -250,12 +250,12 @@ async function addDarkMapLayer(map){
 
 }
 
-function getOsmRouteIds(route){
+function getOsmRouteIds(route, idsAttribute = "osmIds", fallbackAttribute = "osmId"){
 
-    const listedIds = route.dataset.osmIds;
+    const listedIds = route.dataset[idsAttribute];
     const entries = listedIds
         ? listedIds.split(",").map(value => value.trim()).filter(Boolean)
-        : [route.dataset.osmId].filter(Boolean);
+        : [route.dataset[fallbackAttribute]].filter(Boolean);
 
     return entries.map(entry => {
         const [type, id] = entry.includes(":")
@@ -425,8 +425,7 @@ async function fetchOsmRouteId(osmId, osmType = ""){
     throw lastError || new Error("OpenStreetMap güzergâhı alınamadı.");
 }
 
-async function fetchOsmRoute(route){
-    const routeIds = getOsmRouteIds(route);
+async function fetchOsmRoute(route, routeIds = getOsmRouteIds(route)){
     const routeData = await Promise.all(
         routeIds.map(({ id, type }) => fetchOsmRouteId(id, type))
     );
@@ -449,9 +448,12 @@ async function initializeOsmRoute(route){
 
     const routeName = getOsmRouteName(route);
     try{
-        const [leaflet, routeData] = await Promise.all([
+        const [leaflet, routeData, baseRouteData] = await Promise.all([
             loadLeaflet(),
-            fetchOsmRoute(route)
+            fetchOsmRoute(route),
+            route.dataset.osmBaseIds
+                ? fetchOsmRoute(route, getOsmRouteIds(route, "osmBaseIds", ""))
+                : Promise.resolve(null)
         ]);
         const { segments, stations } = routeData;
 
@@ -471,13 +473,55 @@ async function initializeOsmRoute(route){
         await addDarkMapLayer(map);
 
         const color = route.dataset.osmColor || "#e91977";
-        const routeLines = leaflet.featureGroup(
-            segments.map(coordinates => leaflet.polyline(coordinates, {
+        if(baseRouteData){
+            const legendControl = leaflet.control({ position: "bottomleft" });
+            legendControl.onAdd = ()=>{
+                const legend = leaflet.DomUtil.create("div", "osm-map-legend");
+                legend.setAttribute("aria-label", "Harita lejantı");
+
+                [
+                    { label: route.dataset.osmBaseName || "Mevcut hat", color: "#858585" },
+                    { label: routeName, color }
+                ].forEach(({ label, color: lineColor }) => {
+                    const item = document.createElement("div");
+                    item.className = "osm-map-legend-item";
+                    const swatch = document.createElement("span");
+                    swatch.className = "osm-map-legend-swatch";
+                    swatch.style.backgroundColor = lineColor;
+                    swatch.setAttribute("aria-hidden", "true");
+                    const name = document.createElement("span");
+                    name.textContent = label;
+                    item.append(swatch, name);
+                    legend.append(item);
+                });
+
+                return legend;
+            };
+            legendControl.addTo(map);
+        }
+        const routeLines = leaflet.featureGroup([
+            ...(baseRouteData?.segments || []).map(coordinates => leaflet.polyline(coordinates, {
+                color: "#858585",
+                weight: 5,
+                opacity: 0.75
+            })),
+            ...segments.map(coordinates => leaflet.polyline(coordinates, {
                 color,
                 weight: 5,
                 opacity: 0.9
             }))
-        ).addTo(map);
+        ]).addTo(map);
+        baseRouteData?.stations.forEach(station => {
+            const popup = document.createElement("span");
+            popup.textContent = station.name;
+            leaflet.circleMarker(station.coordinates, {
+                radius: 5,
+                color: "#858585",
+                weight: 2,
+                fillColor: "#ffffff",
+                fillOpacity: 1
+            }).bindPopup(popup).addTo(map);
+        });
         stations.forEach(station => {
             const popup = document.createElement("span");
             popup.textContent = station.name;
@@ -559,11 +603,17 @@ function openExpandedMap(mapElement, map, expandButton){
     document.body.append(overlay);
 
     mapElement.classList.add("osm-route-map--expanded");
+    mapElement.querySelectorAll(".osm-map-legend").forEach(legend =>
+        legend.classList.add("osm-map-legend--visible")
+    );
     expandButton.setAttribute("aria-label", "Haritayı küçült");
     expandButton.title = "Haritayı küçült";
 
     function closeExpandedMap(){
         mapElement.classList.remove("osm-route-map--expanded");
+        mapElement.querySelectorAll(".osm-map-legend").forEach(legend =>
+            legend.classList.remove("osm-map-legend--visible")
+        );
         expandButton.setAttribute("aria-label", "Haritayı büyüt");
         expandButton.title = "Haritayı büyüt";
         if(originalNextSibling?.parentElement === originalParent){
@@ -640,6 +690,7 @@ async function initializeVisionMap(){
         const routes = [];
         const seenIds = new Set();
         const legendedLines = new Set();
+        const stationMarkers = [];
 
         pageResponses.forEach(({ page, html })=>{
             const pageDocument = new DOMParser().parseFromString(html, "text/html");
@@ -691,13 +742,15 @@ async function initializeVisionMap(){
                 routeData.stations.forEach(station => {
                     const popup = document.createElement("span");
                     popup.textContent = station.name;
-                    leaflet.circleMarker(station.coordinates, {
+                    const stationMarker = leaflet.circleMarker(station.coordinates, {
                         radius: 5,
                         color: route.color,
                         weight: 2,
                         fillColor: "#ffffff",
-                        fillOpacity: 1
+                        fillOpacity: 0,
+                        opacity: 0
                     }).bindPopup(popup).addTo(map);
+                    stationMarkers.push(stationMarker);
                 });
                 const popupLink = document.createElement("a");
                 popupLink.className = "vision-map-popup-link";
@@ -731,6 +784,16 @@ async function initializeVisionMap(){
         }else{
             map.setView([40.98, 29.12], 10);
         }
+
+        const updateStationVisibility = ()=>{
+            const isVisible = map.getZoom() >= 15;
+            stationMarkers.forEach(marker => marker.setStyle({
+                opacity: isVisible ? 1 : 0,
+                fillOpacity: isVisible ? 1 : 0
+            }));
+        };
+        map.on("zoomend", updateStationVisibility);
+        updateStationVisibility();
 
         const expandControl = leaflet.control({ position: "topleft" });
         expandControl.onAdd = ()=>{

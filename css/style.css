@@ -45,6 +45,37 @@ border-radius:10px;
 background:#eef2f6;
 }
 
+.osm-map-legend{
+display:none;
+gap:8px;
+max-width:260px;
+padding:10px 12px;
+color:#333;
+background:rgba(255,255,255,.96);
+border:1px solid rgba(0,0,0,.2);
+border-radius:5px;
+box-shadow:0 1px 5px rgba(0,0,0,.35);
+font-size:13px;
+}
+
+.osm-map-legend--visible{
+display:grid;
+}
+
+.osm-map-legend-item{
+display:flex;
+align-items:center;
+gap:8px;
+line-height:1.4;
+}
+
+.osm-map-legend-swatch{
+width:24px;
+height:4px;
+flex:0 0 24px;
+border-radius:2px;
+}
+
 .osm-map-error{
 min-height:180px;
 display:flex;
